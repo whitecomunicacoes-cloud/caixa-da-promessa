@@ -377,9 +377,48 @@
 var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
 ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
-
   ttq.load('D3TD223C77UB2CR9K4F0');
   ttq.page();
+
+  // ======================
+  // EVENTOS TIKTOK PIXEL
+  // ======================
+  
+  // 1️⃣ Instalação PWA
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "installBtn") {
+      ttq.track('InstallApp', {
+        contents: [],
+        content_type: 'product'
+      });
+      console.log("📲 Evento TikTok: InstallApp disparado");
+    }
+  });
+
+  // 2️⃣ Lead WhatsApp
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
+      ttq.track('Lead', {
+        contents: [],
+        content_type: 'product'
+      });
+      console.log("💬 Evento TikTok: Lead disparado");
+    }
+  });
+
+  // 3️⃣ Acesso Liberado
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "unlockAccessBtn") {
+      ttq.track('CompletePayment', {
+        value: 29.00,
+        currency: 'BRL',
+        contents: [],
+        content_type: 'product'
+      });
+      console.log("🔓 Evento TikTok: CompletePayment disparado");
+    }
+  });
+
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
@@ -390,8 +429,57 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-11222711870');
+
+  // ======================
+  // EVENTOS DE CONVERSÃO - GOOGLE ADS
+  // ======================
+
+  // 1️⃣ Evento - PWA Instalado → "Inscrição"
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "installBtn") {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11222711870/Inscrição',
+        'value': 1.0,
+        'currency': 'BRL'
+      });
+      console.log("📲 Evento Google: Inscrição (PWA) disparado");
+    }
+  });
+
+  // 2️⃣ Evento - Clique no WhatsApp → "Assinatura"
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11222711870/Assinatura',
+        'value': 29.00,
+        'currency': 'BRL'
+      });
+      console.log("💬 Evento Google: Assinatura (WhatsApp) disparado");
+    }
+  });
+
+  // 3️⃣ Evento - Liberar Acesso → "compra"
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "unlockAccessBtn") {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11222711870/compra',
+        'value': 29.00,
+        'currency': 'BRL'
+      });
+      console.log("🔓 Evento Google: compra (Acesso Liberado) disparado");
+    }
+  });
+
+  // 4️⃣ Evento - Page View → "Visualização de página"
+  window.addEventListener('load', function() {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11222711870/Visualização de página',
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+    console.log("🌐 Evento Google: Visualização de página disparado");
+  });
 </script>
 
 </head>
