@@ -1,0 +1,606 @@
+[
+  {
+    "versiculo": "Provérbios 13:11",
+    "texto": "O dinheiro ganho desonestamente logo acaba, mas quem o ajunta aos poucos terá cada vez mais."
+  },
+  {
+    "versiculo": "Provérbios 22:7",
+    "texto": "O rico domina sobre o pobre; quem toma emprestado é escravo de quem empresta."
+  },
+  {
+    "versiculo": "Provérbios 21:20",
+    "texto": "Na casa do sábio há comida requintada e azeite, mas o tolo devora tudo o que pode."
+  },
+  {
+    "versiculo": "Lucas 16:10",
+    "texto": "Quem é fiel no pouco, também é fiel no muito, e quem é desonesto no pouco, também é desonesto no muito."
+  },
+  {
+    "versiculo": "Provérbios 3:9-10",
+    "texto": "Honre o Senhor com todos os seus recursos e com os primeiros frutos de todas as suas colheitas; os seus celeiros ficarão plenamente cheios, e os seus barris transbordarão de vinho."
+  },
+  {
+    "versiculo": "Malaquias 3:10",
+    "texto": "Tragam o dízimo todo ao depósito do templo, para que haja alimento em minha casa. Ponham-me à prova, diz o Senhor dos Exércitos, e vejam se não vou abrir as comportas dos céus e derramar sobre vocês tantas bênçãos que nem terão onde guardá-las."
+  },
+  {
+    "versiculo": "1 Timóteo 6:10",
+    "texto": "Pois o amor ao dinheiro é raiz de todos os males. Algumas pessoas, por cobiçarem o dinheiro, desviaram-se da fé e se atormentaram a si mesmas com muitos sofrimentos."
+  },
+  {
+    "versiculo": "Provérbios 23:4-5",
+    "texto": "Não se esforce para ficar rico; tenha o bom senso de desistir disso. Mal você olha para a riqueza, ela já desapareceu! E como se lhe saíssem asas, voa para o céu como a águia."
+  },
+  {
+    "versiculo": "Eclesiastes 5:10",
+    "texto": "Quem ama o dinheiro jamais terá o suficiente; quem ama as riquezas jamais ficará satisfeito com os seus rendimentos. Isso também não faz sentido."
+  },
+  {
+    "versiculo": "Mateus 6:24",
+    "texto": "Ninguém pode servir a dois senhores; pois odiará um e amará o outro, ou se dedicará a um e desprezará o outro. Vocês não podem servir a Deus e ao Dinheiro."
+  },
+  {
+    "versiculo": "Hebreus 13:5",
+    "texto": "Conservem-se livres do amor ao dinheiro e contentem-se com o que vocês têm, porque Deus mesmo disse: Nunca o deixarei, nunca o abandonarei."
+  },
+  {
+    "versiculo": "Provérbios 11:4",
+    "texto": "A riqueza de nada vale no dia da ira, mas a justiça livra da morte."
+  },
+  {
+    "versiculo": "Provérbios 28:20",
+    "texto": "O homem fiel será muito abençoado, mas o que tem pressa de enriquecer não ficará impune."
+  },
+  {
+    "versiculo": "Provérbios 28:22",
+    "texto": "O avarento tem ânsia de enriquecer-se, e não sabe que a pobreza o aguarda."
+  },
+  {
+    "versiculo": "Lucas 12:15",
+    "texto": "Então lhes disse: Cuidado! Fiquem de sobreaviso contra todo tipo de ganância; a vida de um homem não consiste na quantidade dos seus bens."
+  },
+  {
+    "versiculo": "Provérbios 30:8-9",
+    "texto": "Mantém longe de mim a falsidade e a mentira; não me dês nem pobreza nem riqueza; dá-me apenas o alimento necessário. Se não, tendo demais, eu te negaria e te deixaria, e diria: Quem é o Senhor? Se eu ficasse pobre, poderia vir a roubar, desonrando assim o nome do meu Deus."
+  },
+  {
+    "versiculo": "1 Timóteo 6:17-19",
+    "texto": "Mande aos ricos deste mundo que não sejam arrogantes, nem ponham sua esperança na incerteza da riqueza, mas em Deus, que de tudo nos provê ricamente, para a nossa satisfação. Mande-os fazer o bem, serem ricos em boas obras, generosos em dar e prontos a repartir. Dessa forma eles acumularão um tesouro para si mesmos, um firme fundamento para a era que há de vir, e assim alcançarão a verdadeira vida."
+  },
+  {
+    "versiculo": "Provérbios 11:28",
+    "texto": "Quem confia em suas riquezas cairá, mas os justos florescerão como a folhagem."
+  },
+  {
+    "versiculo": "Provérbios 22:1",
+    "texto": "Ter boa reputação é melhor do que ter muita riqueza; o respeito é melhor do que a prata e do que o ouro."
+  },
+  {
+    "versiculo": "Provérbios 16:8",
+    "texto": "É melhor ter pouco com justiça do que muito com injustiça."
+  },
+  {
+    "versiculo": "Mateus 6:19-21",
+    "texto": "Não acumulem para vocês tesouros na terra, onde a traça e a ferrugem destroem, e onde os ladrões arrombam e furtam. Mas acumulem para vocês tesouros nos céus, onde a traça e a ferrugem não destroem, e onde os ladrões não arrombam nem furtam. Pois onde estiver o seu tesouro, aí também estará o seu coração."
+  },
+  {
+    "versiculo": "Provérbios 13:22",
+    "texto": "O homem bom deixa herança para os filhos de seus filhos, mas a riqueza do pecador é armazenada para os justos."
+  },
+  {
+    "versiculo": "Salmo 62:10",
+    "texto": "Não confiem na extorsão nem ponham vãs esperanças nos bens roubados; ainda que as suas riquezas aumentem, não ponham o coração nelas."
+  },
+  {
+    "versiculo": "Provérbios 11:24",
+    "texto": "Há quem dê generosamente, e vê aumentar suas riquezas; outros retêm o que deveriam dar, e caem na pobreza."
+  },
+  {
+    "versiculo": "Lucas 6:38",
+    "texto": "Deem, e lhes será dado: uma boa medida, calcada, sacudida e transbordante será dada a vocês. Pois a medida que usarem, também será usada para medir vocês."
+  },
+  {
+    "versiculo": "2 Coríntios 9:6-7",
+    "texto": "Lembrem-se: aquele que semeia pouco, também colherá pouco, e aquele que semeia com fartura, também colherá fartamente. Cada um dê conforme determinou em seu coração, não com pesar ou por obrigação, pois Deus ama quem dá com alegria."
+  },
+  {
+    "versiculo": "Provérbios 28:27",
+    "texto": "Quem dá aos pobres não terá necessidade de nada, mas quem fecha os olhos para eles receberá muitas maldições."
+  },
+  {
+    "versiculo": "Provérbios 19:17",
+    "texto": "Quem trata bem os pobres empresta ao Senhor, e ele o recompensará."
+  },
+  {
+    "versiculo": "Provérbios 22:9",
+    "texto": "O generoso será abençoado, pois reparte a sua comida com o pobre."
+  },
+  {
+    "versiculo": "Deuteronômio 8:18",
+    "texto": "Mas lembre-se do Senhor, o seu Deus, pois é ele que lhe dá a capacidade de produzir riqueza, confirmando a aliança que jurou aos seus antepassados, conforme hoje se vê."
+  },
+  {
+    "versiculo": "Provérbios 10:22",
+    "texto": "A bênção do Senhor traz riqueza, e ele não acrescenta dor alguma."
+  },
+  {
+    "versiculo": "Filipenses 4:19",
+    "texto": "O meu Deus suprirá todas as necessidades de vocês, de acordo com as suas gloriosas riquezas em Cristo Jesus."
+  },
+  {
+    "versiculo": "Romanos 13:8",
+    "texto": "Não devam nada a ninguém, a não ser o amor de uns pelos outros, pois aquele que ama seu próximo tem cumprido a Lei."
+  },
+  {
+    "versiculo": "Provérbios 22:26-27",
+    "texto": "Não seja você daqueles que, com um aperto de mão, empenham-se e tornam-se fiadores de dívidas. Se você não tem como saldá-las, por que correr o risco de perder até a cama em que dorme?"
+  },
+  {
+    "versiculo": "Provérbios 17:18",
+    "texto": "Só uma pessoa sem juízo dá a sua palavra e assume a responsabilidade pelo seu próximo."
+  },
+  {
+    "versiculo": "Provérbios 11:15",
+    "texto": "Quem serve de fiador certamente sofrerá, mas quem se recusa a fazê-lo estará seguro."
+  },
+  {
+    "versiculo": "Lucas 14:28",
+    "texto": "Qual de vocês, se quiser construir uma torre, primeiro não se assenta e calcula o preço, para ver se tem dinheiro suficiente para completá-la?"
+  },
+  {
+    "versiculo": "Provérbios 21:5",
+    "texto": "Os planos bem elaborados levam à fartura, mas o apressado sempre acaba na miséria."
+  },
+  {
+    "versiculo": "Provérbios 27:23-24",
+    "texto": "Procure saber como vão as suas ovelhas; cuide bem dos seus rebanhos; pois as riquezas não duram para sempre, e a coroa não permanece por todas as gerações."
+  },
+  {
+    "versiculo": "Provérbios 27:12",
+    "texto": "O prudente vê o perigo e busca refúgio, mas os inexperientes seguem adiante e sofrem as consequências."
+  },
+  {
+    "versiculo": "Provérbios 21:17",
+    "texto": "Quem ama o prazer será pobre; quem ama o vinho e o azeite jamais será rico."
+  },
+  {
+    "versiculo": "Provérbios 23:20-21",
+    "texto": "Não ande com os que se enchem de vinho, nem com os que se empanturram de carne. Pois os bêbados e os glutões se empobrecerão, e a sonolência os vestirá de trapos."
+  },
+  {
+    "versiculo": "Provérbios 28:19",
+    "texto": "Quem trabalha a sua terra terá fartura de alimento, mas quem corre atrás de fantasias se fartará de miséria."
+  },
+  {
+    "versiculo": "Provérbios 10:4",
+    "texto": "Mãos preguiçosas levam à pobreza, mas mãos habilidosas trazem riqueza."
+  },
+  {
+    "versiculo": "Provérbios 13:4",
+    "texto": "O preguiçoso ambiciona, e nada consegue, mas os desejos dos diligentes são plenamente satisfeitos."
+  },
+  {
+    "versiculo": "Provérbios 20:4",
+    "texto": "O preguiçoso não ara no tempo próprio; na colheita procura e nada encontra."
+  },
+  {
+    "versiculo": "Provérbios 6:6-11",
+    "texto": "Observe a formiga, preguiçoso, reflita nos caminhos dela e seja sábio! Ela não tem nem chefe, nem supervisor, nem governante, mas no verão armazena as suas provisões e na época da colheita ajunta o seu alimento. Até quando você vai ficar deitado, preguiçoso? Quando se levantará de seu sono? Um pouco de sono, um pouco de cochilo, um pouco cruzando os braços para descansar, e a sua pobreza o surpreenderá como um assaltante, e a sua miséria como um homem armado."
+  },
+  {
+    "versiculo": "Provérbios 12:24",
+    "texto": "As mãos diligentes dominarão, mas a preguiça acaba em trabalho escravo."
+  },
+  {
+    "versiculo": "Provérbios 14:23",
+    "texto": "Todo trabalho árduo traz recompensa, mas o simples falar leva apenas à pobreza."
+  },
+  {
+    "versiculo": "Provérbios 10:5",
+    "texto": "Quem armazena na época da colheita é filho prudente, mas quem dorme na época da colheita é filho que envergonha."
+  },
+  {
+    "versiculo": "2 Tessalonicenses 3:10",
+    "texto": "Pois, quando ainda estávamos com vocês, nós lhes ordenamos isto: se alguém não quiser trabalhar, também não coma."
+  },
+  {
+    "versiculo": "Provérbios 11:25",
+    "texto": "O generoso prosperará; quem dá alívio aos outros, alívio receberá."
+  },
+  {
+    "versiculo": "Atos 20:35",
+    "texto": "Em tudo o que fiz, mostrei-lhes que mediante trabalho árduo devemos ajudar os fracos, lembrando as palavras do próprio Senhor Jesus, que disse: Há maior felicidade em dar do que em receber."
+  },
+  {
+    "versiculo": "Provérbios 28:25",
+    "texto": "O ganancioso provoca dissensão, mas quem confia no Senhor prosperará."
+  },
+  {
+    "versiculo": "Provérbios 15:27",
+    "texto": "O ganancioso traz desgraça para a sua família, mas quem odeia o suborno viverá."
+  },
+  {
+    "versiculo": "Tiago 5:1-3",
+    "texto": "Ouçam agora, vocês que são ricos! Chorem e lamentem-se, tendo em vista a desgraça que virá sobre vocês. A riqueza de vocês apodreceu, e as traças corroeram as suas roupas. O ouro e a prata de vocês enferrujaram, e a ferrugem deles testemunhará contra vocês e como fogo lhes devorará a carne. Vocês acumularam bens nestes últimos dias."
+  },
+  {
+    "versiculo": "Provérbios 22:16",
+    "texto": "Quem oprime os pobres para se enriquecer e quem dá presentes aos ricos, ambos cairão na pobreza."
+  },
+  {
+    "versiculo": "Provérbios 21:6",
+    "texto": "Conseguir riquezas por meio de língua mentirosa é um vapor passageiro e uma armadilha mortal."
+  },
+  {
+    "versiculo": "Provérbios 11:1",
+    "texto": "O Senhor abomina balanças desonestas, mas os pesos exatos lhe dão prazer."
+  },
+  {
+    "versiculo": "Provérbios 20:10",
+    "texto": "Pesos diversos e medidas desonestas; o Senhor detesta ambos."
+  },
+  {
+    "versiculo": "Provérbios 16:11",
+    "texto": "Peso e balança justos procedem do Senhor; todos os pesos da bolsa são obra dele."
+  },
+  {
+    "versiculo": "Levítico 19:35-36",
+    "texto": "Não usem medidas injustas, seja de comprimento, de peso ou de quantidade. Usem balanças honestas, pesos honestos, efa honesto e him honesto. Eu sou o Senhor, o Deus de vocês, que os tirou do Egito."
+  },
+  {
+    "versiculo": "Deuteronômio 25:13-15",
+    "texto": "Não tenham na bolsa dois pesos diferentes, um pesado, outro leve. Não tenham em casa duas medidas diferentes, uma grande, outra pequena. Tenham sempre pesos exatos e honestos e medidas exatas e honestas, para que tenham vida longa na terra que o Senhor, o seu Deus, lhes dá."
+  },
+  {
+    "versiculo": "Provérbios 20:17",
+    "texto": "O pão conseguido com falsidade pode parecer doce, mas depois a boca se enche de areia."
+  },
+  {
+    "versiculo": "Provérbios 28:8",
+    "texto": "Quem aumenta sua riqueza por meio de juros exorbitantes a acumula para outro, que será bondoso com os pobres."
+  },
+  {
+    "versiculo": "Êxodo 22:25",
+    "texto": "Se você emprestar dinheiro a alguém do meu povo, a algum necessitado que viva perto de você, não cobre juros dele; não empreste visando lucro."
+  },
+  {
+    "versiculo": "Salmo 15:5",
+    "texto": "Que empresta o seu dinheiro sem exigir juros e não aceita suborno contra o inocente. Quem assim procede nunca será abalado!"
+  },
+  {
+    "versiculo": "Provérbios 11:18",
+    "texto": "O ímpio recebe um pagamento ilusório, mas o que semeia a justiça tem recompensa garantida."
+  },
+  {
+    "versiculo": "Isaías 55:2",
+    "texto": "Por que gastar dinheiro naquilo que não é pão, e o seu trabalho árduo naquilo que não satisfaz? Escutem-me bem, e comam o que é bom, e a alma de vocês se deliciará com a mais fina refeição."
+  },
+  {
+    "versiculo": "1 Timóteo 5:8",
+    "texto": "Se alguém não cuida de seus parentes, e especialmente dos de sua própria família, negou a fé e é pior que um descrente."
+  },
+  {
+    "versiculo": "Provérbios 13:7",
+    "texto": "Há quem finja ser rico, mas nada tem, e há quem finja ser pobre, mas tem grandes riquezas."
+  },
+  {
+    "versiculo": "Provérbios 18:11",
+    "texto": "A riqueza do rico é a sua cidade fortificada; ela é como um muro alto em sua imaginação."
+  },
+  {
+    "versiculo": "Provérbios 10:15",
+    "texto": "Os bens do rico são a sua cidade forte; a pobreza dos pobres é a sua ruína."
+  },
+  {
+    "versiculo": "Provérbios 23:23",
+    "texto": "Compre a verdade e a sabedoria, a instrução e o entendimento, e não as venda."
+  },
+  {
+    "versiculo": "Provérbios 24:3-4",
+    "texto": "Com sabedoria se constrói a casa, e com discernimento se consolida; com conhecimento os seus cômodos se enchem do que é precioso e agradável."
+  },
+  {
+    "versiculo": "Eclesiastes 7:12",
+    "texto": "A sabedoria oferece proteção, assim como o dinheiro, mas a vantagem do conhecimento é esta: a sabedoria preserva a vida de quem a possui."
+  },
+  {
+    "versiculo": "Provérbios 8:10-11",
+    "texto": "Escolham a minha instrução, e não a prata; o conhecimento, e não o ouro refinado, pois a sabedoria é mais preciosa do que rubis; nada do que você possa desejar compara-se com ela."
+  },
+  {
+    "versiculo": "Provérbios 3:13-15",
+    "texto": "Como é feliz o homem que acha a sabedoria, o homem que obtém entendimento, pois a sabedoria é mais proveitosa do que a prata e rende mais do que o ouro. É mais preciosa do que rubis; nada do que você possa desejar compara-se com ela."
+  },
+  {
+    "versiculo": "Mateus 16:26",
+    "texto": "Que adiantará ao homem ganhar o mundo inteiro e perder a sua alma? Ou, o que o homem poderá dar em troca de sua alma?"
+  },
+  {
+    "versiculo": "Lucas 12:16-21",
+    "texto": "Então lhes contou esta parábola: A terra de certo homem rico produziu muito bem. Ele pensou consigo mesmo: Que farei? Não tenho onde armazenar minha colheita. Então disse: Já sei o que vou fazer. Vou derrubar os meus celeiros e construir outros maiores, e ali guardarei toda a minha safra e todos os meus bens. E direi a mim mesmo: Você tem grande quantidade de bens, armazenados para muitos anos. Descanse, coma, beba e alegre-se. Contudo, Deus lhe disse: Insensato! Esta mesma noite a sua vida lhe será exigida. Então, quem ficará com o que você preparou? Assim acontece com quem guarda para si riquezas, mas não é rico para com Deus."
+  },
+  {
+    "versiculo": "1 Timóteo 6:6-8",
+    "texto": "De fato, a piedade com contentamento é grande fonte de lucro, pois nada trouxemos para este mundo e dele nada podemos levar; por isso, tendo o que comer e com que vestir-nos, estejamos com isso satisfeitos."
+  },
+  {
+    "versiculo": "Provérbios 15:16",
+    "texto": "É melhor ter pouco com o temor do Senhor do que ter grande tesouro e inquietação."
+  },
+  {
+    "versiculo": "Provérbios 17:1",
+    "texto": "Melhor é comer pão duro em paz, que ter a casa cheia de comida com discórdias."
+  },
+  {
+    "versiculo": "Eclesiastes 5:12",
+    "texto": "O sono do trabalhador é tranquilo, coma ele muito ou pouco, mas a fartura do rico não o deixa dormir."
+  },
+  {
+    "versiculo": "Provérbios 30:7-9",
+    "texto": "Duas coisas te peço, Senhor; não mas negues antes que eu morra: Mantém longe de mim a falsidade e a mentira; não me dês nem pobreza nem riqueza; dá-me apenas o alimento necessário. Se não, tendo demais, eu te negaria e te deixaria, e diria: Quem é o Senhor? Se eu ficasse pobre, poderia vir a roubar, desonrando assim o nome do meu Deus."
+  },
+  {
+    "versiculo": "Provérbios 28:6",
+    "texto": "É melhor ser pobre e andar em integridade do que ser rico e seguir caminhos perversos."
+  },
+  {
+    "versiculo": "Salmo 37:16",
+    "texto": "É melhor ter pouco com justiça do que grande riqueza com injustiça."
+  },
+  {
+    "versiculo": "Provérbios 15:6",
+    "texto": "A casa do justo guarda grandes tesouros, mas os ganhos do ímpio lhe causam infortúnio."
+  },
+  {
+    "versiculo": "Provérbios 10:2",
+    "texto": "Os tesouros da impiedade de nada valem, mas a justiça livra da morte."
+  },
+  {
+    "versiculo": "Provérbios 11:4",
+    "texto": "A riqueza de nada vale no dia da ira, mas a justiça livra da morte."
+  },
+  {
+    "versiculo": "Provérbios 20:21",
+    "texto": "A herança obtida rapidamente no início não será abençoada no fim."
+  },
+  {
+    "versiculo": "Provérbios 13:11",
+    "texto": "O dinheiro ganho desonestamente logo acaba, mas quem o ajunta aos poucos terá cada vez mais."
+  },
+  {
+    "versiculo": "Eclesiastes 5:13-14",
+    "texto": "Vi um mal terrível debaixo do sol: riquezas acumuladas que causam dano ao seu dono, ou riquezas perdidas numa infeliz transação, de modo que, quando o dono tem um filho, já não há nada para deixar."
+  },
+  {
+    "versiculo": "Provérbios 23:4-5",
+    "texto": "Não se canse para enriquecer; seja prudente e desista. Mal você olha para a riqueza, ela já desapareceu! E como se lhe saíssem asas, voa para o céu como a águia."
+  },
+  {
+    "versiculo": "Jeremias 17:11",
+    "texto": "Como a perdiz choca ovos que não pôs, assim é o que ajunta riquezas, mas não justamente; no meio de seus dias as deixará e no fim será um insensato."
+  },
+  {
+    "versiculo": "Provérbios 28:20",
+    "texto": "O homem fiel será muito abençoado, mas o que se apressa a enriquecer não ficará impune."
+  },
+  {
+    "versiculo": "Provérbios 13:8",
+    "texto": "A riqueza do homem pode pagar o resgate da vida, mas o pobre nem ameaças ouve."
+  },
+  {
+    "versiculo": "Eclesiastes 5:19",
+    "texto": "Além disso, quando Deus concede riqueza e bens a alguém e o capacita a desfrutá-los, a aceitar a sua sorte e a ser feliz em seu trabalho, isso é um presente de Deus."
+  },
+  {
+    "versiculo": "Salmo 49:16-17",
+    "texto": "Não tema quando um homem enriquece, quando cresce o esplendor da sua casa; pois quando morrer nada levará consigo, e o seu esplendor não o seguirá."
+  },
+  {
+    "versiculo": "1 Crônicas 29:12",
+    "texto": "De ti vêm a riqueza e a honra; tu dominas sobre todas as coisas. Nas tuas mãos estão a força e o poder para exaltar e dar força a todos."
+  },
+  {
+    "versiculo": "Deuteronômio 28:11-12",
+    "texto": "O Senhor lhe concederá grande prosperidade, no fruto do seu ventre, nas crias dos seus animais e nas colheitas da sua terra, na terra que jurou aos seus antepassados que lhe daria. O Senhor abrirá os céus, o depósito do seu tesouro, para enviar chuva à sua terra no devido tempo e para abençoar todo o trabalho das suas mãos."
+  },
+  {
+    "versiculo": "2 Coríntios 9:8",
+    "texto": "E Deus é poderoso para fazer que lhes seja acrescentada toda a graça, para que em todas as coisas, em todo o tempo, tendo tudo o que é necessário, vocês transbordem em toda boa obra."
+  },
+  {
+    "versiculo": "Provérbios 10:22",
+    "texto": "A bênção do Senhor traz riqueza, e ele não acrescenta dor alguma."
+  },
+  {
+    "versiculo": "Salmo 112:1-3",
+    "texto": "Aleluia! Como é feliz o homem que teme ao Senhor e tem grande prazer em seus mandamentos! Seus filhos serão poderosos na terra; a geração dos justos será abençoada. Em sua casa haverá riqueza e bens, e a sua justiça permanece para sempre."
+  },
+  {
+    "versiculo": "Mateus 6:33",
+    "texto": "Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e todas essas coisas lhes serão acrescentadas."
+  },
+  {
+    "versiculo": "Salmo 84:11",
+    "texto": "Pois o Senhor Deus é sol e escudo; o Senhor concede favor e honra; nenhum bem recusa aos que vivem com integridade."
+  },
+  {
+    "versiculo": "Provérbios 8:18-21",
+    "texto": "Comigo estão riquezas e honra, prosperidade e justiça duradouras. O meu fruto é melhor do que o ouro fino; o meu produto é melhor do que a prata escolhida. Ando pelo caminho da justiça, pelas veredas do direito, concedendo riqueza aos que me amam e enchendo os seus tesouros."
+  },
+  {
+    "versiculo": "Provérbios 22:4",
+    "texto": "A humildade e o temor do Senhor trazem riquezas, honra e vida."
+  },
+  {
+    "versiculo": "Salmo 37:25-26",
+    "texto": "Fui jovem e agora sou velho, mas nunca vi o justo desamparado, nem seus filhos mendigando o pão. Ele é sempre generoso e empresta com bondade, e seus filhos são abençoados."
+  },
+  {
+    "versiculo": "Provérbios 3:16",
+    "texto": "Na mão direita da sabedoria há vida longa; em sua mão esquerda, riqueza e honra."
+  },
+  {
+    "versiculo": "Tiago 1:17",
+    "texto": "Toda boa dádiva e todo dom perfeito vêm do alto, descendo do Pai das luzes, que não muda como sombras inconstantes."
+  },
+  {
+    "versiculo": "Lucas 16:11",
+    "texto": "De modo que, se vocês não forem dignos de confiança em lidar com as riquezas deste mundo ímpio, quem confiará as verdadeiras riquezas a vocês?"
+  },
+  {
+    "versiculo": "Provérbios 19:14",
+    "texto": "Casas e riquezas herdam-se dos pais, mas do Senhor vem a esposa prudente."
+  },
+  {
+    "versiculo": "Eclesiastes 2:26",
+    "texto": "Ao homem que lhe agrada, Deus concede sabedoria, conhecimento e alegria; mas ao pecador dá a tarefa de ajuntar e acumular riqueza para entregá-la depois a quem agrada a Deus. Isso também não faz sentido; é correr atrás do vento."
+  },
+  {
+    "versiculo": "Salmo 128:1-2",
+    "texto": "Como são felizes todos os que temem o Senhor, todos os que andam em obediência aos seus caminhos! Você comerá do fruto do seu trabalho, e será feliz e próspero."
+  },
+  {
+    "versiculo": "Josué 1:8",
+    "texto": "Não deixe de falar as palavras deste Livro da Lei e de meditar nelas de dia e de noite, para que você cumpra fielmente tudo o que nele está escrito. Só então os seus caminhos prosperarão e você será bem-sucedido."
+  },
+  {
+    "versiculo": "Salmo 1:3",
+    "texto": "É como árvore plantada à beira de águas correntes: Dá fruto no tempo certo e suas folhas não murcham. Tudo o que ele faz prospera!"
+  },
+  {
+    "versiculo": "Provérbios 14:24",
+    "texto": "A riqueza dos sábios é a sua coroa, mas a insensatez dos tolos produz insensatez."
+  },
+  {
+    "versiculo": "Provérbios 21:20",
+    "texto": "Na casa do sábio há comida requintada e azeite, mas o tolo devora tudo o que pode."
+  },
+  {
+    "versiculo": "Eclesiastes 11:1-2",
+    "texto": "Lance o seu pão sobre as águas, porque depois de muitos dias você o encontrará. Divida o que você tem com sete, até com oito, pois você não sabe que desgraça poderá cair sobre a terra."
+  },
+  {
+    "versiculo": "Ageu 2:8",
+    "texto": "Minha é a prata e meu é o ouro, declara o Senhor dos Exércitos."
+  },
+  {
+    "versiculo": "Salmo 50:10-12",
+    "texto": "Pois todos os animais da floresta são meus, e meu é o gado aos milhares sobre as colinas. Conheço todas as aves dos montes, e as criaturas do campo me pertencem. Se eu tivesse fome, não lhe diria, pois meu é o mundo e tudo o que nele existe."
+  },
+  {
+    "versiculo": "1 Coríntios 10:26",
+    "texto": "Porque do Senhor é a terra e tudo o que nela existe."
+  },
+  {
+    "versiculo": "Provérbios 12:11",
+    "texto": "Quem trabalha a sua terra terá fartura de alimento, mas quem vai atrás de fantasias não tem juízo."
+  },
+  {
+    "versiculo": "Colossenses 3:23-24",
+    "texto": "Tudo o que fizerem, façam de todo o coração, como para o Senhor, e não para os homens, sabendo que receberão do Senhor a recompensa da herança. É a Cristo, o Senhor, que vocês estão servindo."
+  },
+  {
+    "versiculo": "Provérbios 11:16",
+    "texto": "A mulher bondosa conquista o respeito, mas os homens cruéis só conquistam riquezas."
+  },
+  {
+    "versiculo": "Provérbios 14:31",
+    "texto": "Quem oprime os pobres insulta o seu Criador, mas quem trata os necessitados com bondade o honra."
+  },
+  {
+    "versiculo": "Provérbios 22:2",
+    "texto": "O rico e o pobre têm algo em comum: o Senhor é o Criador de ambos."
+  },
+  {
+    "versiculo": "Tiago 2:5",
+    "texto": "Ouçam, meus amados irmãos: Não escolheu Deus os que são pobres aos olhos do mundo para serem ricos em fé e herdarem o Reino que ele prometeu aos que o amam?"
+  },
+  {
+    "versiculo": "Provérbios 29:7",
+    "texto": "Os justos dedicam-se à causa dos pobres, mas os ímpios não têm esse interesse."
+  },
+  {
+    "versiculo": "Deuteronômio 15:10",
+    "texto": "Dê-lhe generosamente, e sem relutância no coração; pois, por isso, o Senhor, o seu Deus, o abençoará em todo o seu trabalho e em tudo o que você fizer."
+  },
+  {
+    "versiculo": "Provérbios 14:21",
+    "texto": "É pecado desprezar o próximo, mas como é feliz quem trata com bondade os necessitados!"
+  },
+  {
+    "versiculo": "Isaías 58:10-11",
+    "texto": "Se você se dedicar aos famintos e saciar o desejo dos aflitos, então sua luz despontará nas trevas, e a sua noite será como o meio-dia. O Senhor o guiará constantemente; satisfará os seus desejos numa terra ressequida pelo sol e fortalecerá os seus ossos. Você será como um jardim bem regado, como uma fonte cujas águas nunca faltam."
+  },
+  {
+    "versiculo": "Salmo 41:1-2",
+    "texto": "Como é feliz aquele que tem consideração para com o fraco; o Senhor o livra em tempos de adversidade. O Senhor o protegerá e preservará a sua vida; ele será considerado feliz na terra e não o entregará ao desejo dos seus adversários."
+  },
+  {
+    "versiculo": "Provérbios 31:20",
+    "texto": "Abre os braços para os pobres e estende as mãos para os necessitados."
+  },
+  {
+    "versiculo": "Mateus 25:40",
+    "texto": "O Rei responderá: Digo-lhes a verdade: O que vocês fizeram a algum dos meus menores irmãos, a mim o fizeram."
+  },
+  {
+    "versiculo": "2 Coríntios 8:9",
+    "texto": "Pois vocês conhecem a graça de nosso Senhor Jesus Cristo que, sendo rico, se fez pobre por amor de vocês, para que por meio de sua pobreza vocês se tornassem ricos."
+  },
+  {
+    "versiculo": "Filipenses 4:11-13",
+    "texto": "Não estou dizendo isso porque esteja necessitado, pois aprendi a adaptar-me a toda e qualquer circunstância. Sei o que é passar necessidade e sei o que é ter fartura. Aprendi o segredo de viver contente em toda e qualquer situação, seja bem alimentado, seja com fome, tendo muito, ou passando necessidade. Tudo posso naquele que me fortalece."
+  },
+  {
+    "versiculo": "Provérbios 27:24",
+    "texto": "Pois as riquezas não duram para sempre, e a coroa não permanece por todas as gerações."
+  },
+  {
+    "versiculo": "Provérbios 23:5",
+    "texto": "Mal você olha para a riqueza, ela já desapareceu! E como se lhe saíssem asas, voa para o céu como a águia."
+  },
+  {
+    "versiculo": "1 Timóteo 6:9",
+    "texto": "Os que querem ficar ricos caem em tentação, em armadilhas e em muitos desejos descontrolados e nocivos, que levam os homens a mergulharem na ruína e na destruição."
+  },
+  {
+    "versiculo": "Eclesiastes 6:2",
+    "texto": "Deus dá a um homem riqueza, bens e honra, de modo que não lhe falta nada do que deseja, mas Deus não lhe concede a capacidade de desfrutá-los, e um estranho os desfruta. Isso não faz sentido! É um mal terrível."
+  },
+  {
+    "versiculo": "Salmo 52:7",
+    "texto": "Vejam só! Esse é o homem que não fez de Deus o seu refúgio, mas confiou em sua grande riqueza e fortaleceu-se com a destruição dos outros!"
+  },
+  {
+    "versiculo": "Marcos 8:36",
+    "texto": "Pois, que adianta ao homem ganhar o mundo inteiro e perder a sua alma?"
+  },
+  {
+    "versiculo": "Lucas 18:24-25",
+    "texto": "Vendo-o assim, Jesus disse: Quão difícil é aos ricos entrar no Reino de Deus! De fato, é mais fácil um camelo passar pelo fundo de uma agulha do que um rico entrar no Reino de Deus."
+  },
+  {
+    "versiculo": "Provérbios 11:2",
+    "texto": "Quando vem a soberba, vem também a desonra, mas a sabedoria está com os humildes."
+  },
+  {
+    "versiculo": "Provérbios 16:18-19",
+    "texto": "O orgulho vem antes da destruição; o espírito altivo, antes da queda. É melhor ser humilde de espírito com os oprimidos do que partilhar despojos com os orgulhosos."
+  },
+  {
+    "versiculo": "Tiago 4:13-15",
+    "texto": "Ouçam agora, vocês que dizem: Hoje ou amanhã iremos para esta ou aquela cidade, passaremos um ano ali, faremos negócios e ganharemos dinheiro. Vocês nem sabem o que lhes acontecerá amanhã! Que é a sua vida? Vocês são como a neblina que aparece por um pouco de tempo e depois se dissipa. Ao invés disso, deveriam dizer: Se o Senhor quiser, viveremos e faremos isto ou aquilo."
+  },
+  {
+    "versiculo": "Provérbios 27:1",
+    "texto": "Não se gabe do dia de amanhã, pois você não sabe o que um dia pode trazer."
+  },
+  {
+    "versiculo": "Apocalipse 3:17-18",
+    "texto": "Você diz: Estou rico, adquiri riquezas e não preciso de nada. Não reconhece, porém, que é miserável, digno de compaixão, pobre, cego e que está nu. Dou-lhe este conselho: Compre de mim ouro refinado no fogo, e você se tornará rico; compre roupas brancas e vista-se para cobrir a sua vergonhosa nudez; e compre colírio para ungir os seus olhos e poder enxergar."
+  },
+  {
+    "versiculo": "Provérbios 18:10-11",
+    "texto": "O nome do Senhor é torre forte; os justos correm para ela e ficam em segurança. A riqueza do rico é a sua cidade fortificada; ela é como um muro alto em sua imaginação."
+  }
+]

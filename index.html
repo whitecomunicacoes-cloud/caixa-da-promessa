@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caixa da Promessa - Promessas Divinas</title>
+<link rel="manifest" href="pwa_manifest.json">
+<meta name="theme-color" content="#7dd3fc">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vh: 1vh;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { 
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 50%, #0f1a3f 100%);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .container {
+    width: 100%; 
+    max-width: 480px; 
+    height: 100%;
+    max-height: 900px;
+    background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 77, 0.95) 50%, rgba(15, 26, 63, 0.95) 100%);
+    border-radius: 30px; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 0 80px rgba(100, 150, 255, 0.4), inset 0 0 40px rgba(138, 43, 226, 0.2);
+    position: relative; 
+    overflow: hidden;
+  }
+
+  .stars-bg { position: absolute; width: 100%; height: 100%; pointer-events: none; }
+  .star { 
+    position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%;
+    animation: twinkle 3s infinite;
+  }
+  @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  .header {
+    padding: 1.5rem 1rem;
+    text-align: center; 
+    border-bottom: 2px solid rgba(138, 43, 226, 0.5);
+    z-index: 5;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7dd3fc, #a78bfa, #c084fc);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(123, 211, 252, 0.3); 
+    margin-bottom: 0.5rem;
+  }
+
+  .header p { 
+    color: rgba(220, 210, 255, 1);
+    font-size: 1rem;
+    font-weight: 400; 
+  }
+
+  .category-section {
+    padding: 1rem; 
+    background: rgba(100, 150, 255, 0.08);
+    border-bottom: 1px solid rgba(138, 43, 226, 0.3); 
+    z-index: 5;
+  }
+
+  .category-label {
+    color: #FFFFFF;
+    font-size: 1.1rem; 
+    font-weight: 600;
+    margin-bottom: 0.8rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .category-select {
+    width: 100%; 
+    padding: 1rem; 
+    border: 2px solid rgba(138, 43, 226, 0.5);
+    background: rgba(10, 14, 39, 0.9);
+    color: #FFFFFF;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif; 
+    transition: all 0.3s;
+    outline: none; 
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  .loading-message {
+    color: rgba(200, 180, 255, 0.8); 
+    font-size: 0.9rem; 
+    text-align: center;
+    margin-top: 0.75rem; 
+    font-weight: 500;
+  }
+
+  .video-section {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+    position: relative; 
+    padding: 1rem; 
+    z-index: 3;
+    min-height: 0;
+  }
+
+  .video-container {
+    width: 100%; 
+    max-width: 300px; 
+    position: relative;
+    border-radius: 15px; 
+    overflow: hidden; 
+    box-shadow: 0 0 50px rgba(251, 191, 36, 0.3);
+  }
+
+  .box-video { width: 100%; height: auto; display: block; border-radius: 15px; }
+
+  .buttons-section {
+    padding: 1rem; 
+    background: rgba(100, 150, 255, 0.08); 
+    border-top: 1px solid rgba(138, 43, 226, 0.3); 
+    z-index: 5;
+  }
+
+  button {
+    border: none; 
+    border-radius: 14px; 
+    font-weight: 700;
+    cursor: pointer; 
+    transition: all 0.3s; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #openBtn {
+    background: linear-gradient(135deg, #fbbf24, #f97316); 
+    color: #0a0e27;
+    font-size: 1.3rem; 
+    padding: 1.2rem; 
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+    width: 100%;
+  }
+
+  #openBtn:hover:not(:disabled) {
+    transform: translateY(-3px); 
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+  }
+
+  #openBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Estilos da tela de resultado */
+  #result { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.9); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: opacity 0.5s; 
+    z-index: 100; 
+    padding: 20px; 
+  }
+  #result.show { opacity: 1; pointer-events: all; }
+  .result-container { 
+    width: 90%; 
+    max-width: 400px; 
+    max-height: 85vh; 
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.95) 0%, rgba(123, 211, 252, 0.95) 100%); 
+    padding: 30px 25px; 
+    border-radius: 25px; 
+    text-align: center; 
+    box-shadow: 0 0 60px rgba(123, 211, 252, 0.6), 0 0 100px rgba(192, 132, 252, 0.4); 
+    border: 2px solid rgba(255, 255, 255, 0.3); 
+    animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+  }
+  @keyframes slideIn { 
+    from { opacity: 0; transform: scale(0.8) translateY(50px); } 
+    to { opacity: 1; transform: scale(1) translateY(0); } 
+  }
+  .result-counter { 
+    font-size: 1rem; 
+    color: rgba(10, 14, 39, 0.7); 
+    font-weight: 600; 
+    margin-bottom: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+  .result-emoji { font-size: 3rem; margin-bottom: 15px; animation: bounce 1s infinite; }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  #resultText { 
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: rgba(10, 14, 39, 0.95); 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    white-space: pre-wrap; 
+    word-break: break-word; 
+    flex: 1; 
+  }
+  .result-verse { 
+    font-size: 1.1rem; 
+    color: rgba(10, 14, 39, 0.75); 
+    font-weight: 500; 
+    margin-top: 15px; 
+    padding-top: 15px; 
+    border-top: 2px solid rgba(10, 14, 39, 0.2); 
+    font-style: italic; 
+  }
+  
+  /* BOTÕES CORRIGIDOS - WHATSAPP PRIMEIRO */
+  .result-actions { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 20px; 
+  }
+
+  /* COMPARTILHAR - EM CIMA (Primeiro) */
+  .share-btn {
+    order: 1;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* FECHAR - EM BAIXO (Segundo) */
+  #closeResult {
+    order: 2;
+    background: rgba(10, 14, 39, 0.2);
+    color: rgba(10, 14, 39, 0.95);
+    border: 2px solid rgba(10, 14, 39, 0.3);
+    padding: 14px;
+    font-weight: 700;
+  }
+
+  .share-btn:hover, #closeResult:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Botão de liberar acesso */
+  #unlockAccessBtn {
+    background: linear-gradient(135deg, #fbbf24, #f97316);
+    color: #0a0e27;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  /* Media query para telas menores */
+  @media (max-height: 700px) {
+    .header h1 { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .header p { font-size: 0.9rem; }
+    .category-label { font-size: 1rem; }
+    .category-select { padding: 0.8rem; font-size: 1rem; background-position: right 0.8rem center; }
+    .video-container { max-width: 240px; }
+    #openBtn { font-size: 1.2rem; padding: 1rem; }
+  }
+  
+  @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+    .arrow {
+      display: inline-block;
+      animation: blink 1s infinite;
+      margin: 0 4px;
+    }
+
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '789636947247328');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=789636947247328&ev=PageView&noscript=1"/>
+</noscript>
+<script>
+  // ======================
+  // EVENTOS DO META PIXEL
+  // ======================
+
+  // 1️⃣ Evento - Baixou o App (clicou em "Instalar agora")
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "installBtn") {
+      fbq('track', 'InstallApp');
+      console.log("📲 Evento Pixel: InstallApp disparado");
+    }
+  });
+
+  // 2️⃣ Evento - Acessou o site (já é automático pelo PageView)
+  // fbq('track', 'PageView'); // já está ativo no cabeçalho
+
+  // 3️⃣ Evento - Clicou em "Clique aqui para adquirir"
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
+      fbq('track', 'Lead');
+      console.log("💬 Evento Pixel: Lead disparado (WhatsApp)");
+    }
+  });
+
+  // 4️⃣ Evento - Clicou em "Já adquiri - Liberar Acesso"
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.id === "unlockAccessBtn") {
+      fbq('track', 'CompleteRegistration');
+      console.log("🔓 Evento Pixel: CompleteRegistration disparado");
+    }
+  });
+</script>
+
+<!-- End Meta Pixel Code -->
+
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+  ttq.load('D3TD223C77UB2CR9K4F0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
+</head>
+
+<script>
+	  let deferredPrompt;
+
+	  window.addEventListener('beforeinstallprompt', (e) => {
+		e.preventDefault();
+		deferredPrompt = e;
+
+		// Cria o banner personalizado
+		const banner = document.createElement('div');
+		banner.id = 'install-banner';
+		banner.innerHTML = `
+		  <div style="
+			position: fixed;
+			bottom: 25px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: linear-gradient(135deg, #14163c, #1f2369);
+			color: white;
+			padding: 20px 24px;
+			border-radius: 24px;
+			box-shadow: 0 0 20px rgba(0,0,0,0.4);
+			text-align: center;
+			z-index: 9999;
+			font-family: 'Poppins', sans-serif;
+			max-width: 360px;
+			animation: fadeIn 0.6s ease;
+		  ">
+			<img src="logo.png" alt="Caixa da Promessa" style="width: 64px; height: 64px; border-radius: 12px; margin-bottom: 10px;">
+			<p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px;">✨ Mais de 8.000 Promessas Para Sua Vida!</p>
+			<button id="installBtn" style="
+			  background: #fbbf24;
+			  border: none;
+			  color: #0a0e27;
+			  padding: 10px 26px;
+			  border-radius: 12px;
+			  font-weight: bold;
+			  font-size: 15px;
+			  cursor: pointer;
+			  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+			  transition: 0.2s;
+			">📲 Instalar agora</button>
+		  </div>
+
+		  <style>
+			@keyframes fadeIn {
+			  from { opacity: 0; transform: translate(-50%, 20px); }
+			  to { opacity: 1; transform: translate(-50%, 0); }
+			}
+			#installBtn:hover {
+			  background: #fde68a;
+			  transform: scale(1.05);
+			}
+		  </style>
+		`;
+		document.body.appendChild(banner);
+
+		// Botão "Instalar agora"
+		document.getElementById('installBtn').addEventListener('click', async () => {
+		  banner.remove();
+		  deferredPrompt.prompt();
+		  const { outcome } = await deferredPrompt.userChoice;
+		  if (outcome === 'accepted') {
+			console.log('✅ App instalado com sucesso!');
+		  } else {
+			console.log('❌ Instalação cancelada.');
+		  }
+		  deferredPrompt = null;
+		});
+	  });
+</script>
+
+<body>
+<audio id="openMusic" loop preload="auto">
+    <source src="harp_music.mp3" type="audio/mp3">
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
+<div class="stars-bg" id="starsBg"></div>
+
+<div class="container">
+  <div class="header">
+    <h1>✨ CAIXA DA PROMESSA ✨</h1>
+    <p>Mais de 8.000 Promessas Para Sua Vida</p>
+  </div>
+
+  <div class="category-section">
+    <div class="category-label">Escolha a área da promessa</div>
+    <div id="freeVersesCounter" style="text-align:center; color:rgba(200, 180, 255, 0.9); font-size:0.9rem; margin-top:5px;"></div>
+    <select class="category-select" id="categorySelect">
+      <option value="spiritual">🙏 Espiritual</option>
+      <option value="family">👨‍👩‍👧 Família</option>
+      <option value="health">💖 Saúde</option>
+      <option value="business">💼 Negócios</option>
+      <option value="money">💰 Dinheiro</option>
+    </select>
+    <div class="loading-message" id="loadingMessage">Carregando promessas...</div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-container">
+      <video class="box-video" id="boxVideo" preload="metadata" playsinline muted>
+        <source src="caixa_abrindo.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
+    </div>
+  </div>
+
+  <div class="buttons-section">
+    <button id="openBtn" disabled>Abrir a Caixa</button>
+    <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
+      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, entre em contato para adquirir o acesso vitalício por R$29,00.</p>
+      <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
+   target="_blank" 
+   style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
+  <span class="arrow">✨</span>
+  Clique aqui para adquirir!
+  <span class="arrow">✨</span>
+</a>
+      <button id="unlockAccessBtn">Já adquiri - Liberar Acesso</button>
+    </div>
+  </div>
+</div>
+
+<div id="result">
+  <div class="result-container">
+    <div class="result-counter" id="resultCounter"></div>
+    <div class="result-emoji">⭐</div>
+    <div id="resultText">Promessa Revelada</div>
+    <div id="resultVerse" class="result-verse"></div>
+    <div class="result-actions">
+      <button class="share-btn" id="shareWhatsApp">
+        <span>📲</span> Compartilhar no WhatsApp
+      </button>
+      <button id="closeResult">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Ajuste de altura para VH em mobile
+  function setVhUnit() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // CRIANDO ESTRELAS DE FUNDO
+  function createStars() {
+    const starsBg = document.getElementById('starsBg');
+    if (starsBg) {
+      starsBg.innerHTML = '';
+      for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        starsBg.appendChild(star);
+      }
+    }
+  }
+
+  // Inicialização quando o DOM estiver carregado
+  document.addEventListener('DOMContentLoaded', function() {
+    setVhUnit();
+    createStars();
+    
+    // Configurar elementos
+    const elements = {
+      openBtn: document.getElementById('openBtn'),
+      result: document.getElementById('result'),
+      resultText: document.getElementById('resultText'),
+      resultVerse: document.getElementById('resultVerse'),
+      resultCounter: document.getElementById('resultCounter'),
+      categorySelect: document.getElementById('categorySelect'),
+      closeResult: document.getElementById('closeResult'),
+      shareWhatsApp: document.getElementById('shareWhatsApp'),
+      openMusic: document.getElementById('openMusic'),
+      boxVideo: document.getElementById('boxVideo'),
+      loadingMessage: document.getElementById('loadingMessage'),
+      monetizationMessage: document.getElementById('monetizationMessage'),
+      freeVersesCounter: document.getElementById('freeVersesCounter'),
+      unlockAccessBtn: document.getElementById('unlockAccessBtn')
+    };
+
+    let promises = {};
+    let opening = false;
+    let freeVersesCount = parseInt(localStorage.getItem('freeVersesCount') || '0');
+    let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
+    const MAX_FREE_VERSES = 20;
+
+    let selectedCategory = 'spiritual';
+    let currentPromise = null;
+
+    const categories = {
+      spiritual: { name: 'Espiritual', emoji: '🙏', file: 'promessas_espiritual.json' },
+      family: { name: 'Família', emoji: '👨‍👩‍👧', file: 'promessas_familia.json' },
+      health: { name: 'Saúde', emoji: '💖', file: 'promessas_saude.json' },
+      business: { name: 'Negócios', emoji: '💼', file: 'promessas_negocios.json' },
+      money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
+    };
+
+    // Atualizar contador inicial
+    updateFreeVersesCounter();
+
+    function updateFreeVersesCounter() {
+      if (hasLifetimeAccess) {
+        elements.freeVersesCounter.textContent = "Acesso vitalício ativado!";
+      } else {
+        elements.freeVersesCounter.textContent = `Versículos gratuitos restantes: ${MAX_FREE_VERSES - freeVersesCount}`;
+      }
+    }
+
+    async function loadPromises() {
+      elements.loadingMessage.textContent = "Carregando promessas...";
+      try {
+        const loadPromises = Object.entries(categories).map(async ([key, config]) => {
+          try {
+            const response = await fetch(config.file);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            promises[key] = data;
+            return { key, success: true };
+          } catch (error) {
+            console.warn(`❌ Falha ao carregar ${config.name}: ${error.message}`);
+            promises[key] = getDefaultPromises(key);
+            return { key, success: false };
+          }
+        });
+
+        const results = await Promise.all(loadPromises);
+        const successful = results.filter(r => r.success).length;
+        
+        if (successful > 0) {
+          elements.loadingMessage.textContent = `✅ ${successful}/${Object.keys(categories).length} categorias carregadas | Pronto!`;
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
+            elements.openBtn.disabled = false;
+          }
+        } else {
+          elements.loadingMessage.textContent = "❌ Erro ao carregar. Usando promessas locais.";
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
+            elements.openBtn.disabled = false;
+          }
+        }
+      } catch (error) {
+        elements.loadingMessage.textContent = "❌ Erro geral. Recarregue a página.";
+        console.error('Erro geral:', error);
+      }
+    }
+
+    function getDefaultPromises(category) {
+      const defaults = {
+        spiritual: [{ texto: "Deus te ama incondicionalmente.", versiculo: "Jeremias 31:3" }],
+        family: [{ texto: "Sua família será abençoada.", versiculo: "Salmos 128" }],
+        health: [{ texto: "O Senhor é a sua cura e a sua força.", versiculo: "Êxodo 15:26" }],
+        business: [{ texto: "Seu trabalho e seus projetos prosperarão.", versiculo: "Deuteronômio 28:8" }],
+        money: [{ texto: "Deus suprirá todas as suas necessidades.", versiculo: "Filipenses 4:19" }]
+      };
+      return defaults[category] || [{ texto: "Deus tem um plano maravilhoso para a sua vida.", versiculo: "Jeremias 29:11" }];
+    }
+
+    // Event Listeners
+    elements.categorySelect.addEventListener('change', (e) => {
+      selectedCategory = e.target.value;
+    });
+
+    elements.openBtn.addEventListener('click', openBox);
+    elements.closeResult.addEventListener('click', () => {
+      elements.result.classList.remove('show');
+    });
+
+    elements.shareWhatsApp.addEventListener('click', shareWhatsApp);
+    
+    // Configurar o botão de liberar acesso
+    if (elements.unlockAccessBtn) {
+      elements.unlockAccessBtn.addEventListener('click', unlockAccess);
+    }
+
+    function unlockAccess() {
+      const code = prompt("Digite o código de liberação recebido após o pagamento:");
+      if (code && code.trim().toUpperCase() === "REVELA29") {
+        localStorage.setItem('hasLifetimeAccess', 'true');
+        hasLifetimeAccess = true;
+        elements.monetizationMessage.style.display = 'none';
+        elements.openBtn.disabled = false;
+        updateFreeVersesCounter();
+        alert("✅ Acesso vitalício liberado com sucesso!");
+      } else {
+        alert("❌ Código incorreto. Verifique e tente novamente.");
+      }
+    }
+
+    function openBox() {
+      if (opening || !promises[selectedCategory]?.length) return;
+
+      // Verificar limite
+      if (freeVersesCount >= MAX_FREE_VERSES && !hasLifetimeAccess) {
+        elements.openBtn.disabled = true;
+        elements.monetizationMessage.style.display = 'block';
+        return;
+      }
+
+      opening = true;
+      elements.openBtn.disabled = true;
+      
+      // Incrementar contador apenas se não tiver acesso vitalício
+      if (!hasLifetimeAccess) {
+        freeVersesCount++;
+        localStorage.setItem('freeVersesCount', freeVersesCount.toString());
+        updateFreeVersesCounter();
+      }
+
+      // Selecionar promessa aleatória
+      const cat = promises[selectedCategory];
+      currentPromise = cat[Math.floor(Math.random() * cat.length)];
+      
+      // Tocar áudio e vídeo APENAS QUANDO O USUÁRIO CLICAR
+      elements.openMusic.currentTime = 0;
+      elements.openMusic.play().catch(console.warn);
+      
+      // RESETAR E TOCAR O VÍDEO DA CAIXA ABRINDO
+      elements.boxVideo.currentTime = 0;
+      elements.boxVideo.loop = false;
+      
+      elements.boxVideo.play().then(() => {
+        console.log("🎬 Vídeo da caixa iniciado");
+      }).catch((error) => {
+        console.warn("❌ Autoplay do vídeo bloqueado:", error);
+        showResultDirectly();
+      });
+      
+      elements.boxVideo.onended = finishRevelation;
+      
+      // Fallback timeout
+      setTimeout(() => {
+        if(opening) {
+          console.log("⏰ Fallback - mostrando resultado após timeout");
+          finishRevelation();
+        }
+      }, 8000);
+    }
+
+    function finishRevelation() {
+      if (!opening) return;
+      
+      elements.openMusic.pause();
+      elements.boxVideo.pause();
+      playWinSound();
+      showResult();
+      
+      setTimeout(() => {
+        opening = false;
+        if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+          elements.openBtn.disabled = false;
+        } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
+          elements.monetizationMessage.style.display = 'block';
+        } else if (hasLifetimeAccess) {
+          elements.openBtn.disabled = false;
+        }
+      }, 1000);
+    }
+
+    function showResultDirectly() {
+      const cat = promises[selectedCategory];
+      if (!currentPromise) {
+        currentPromise = cat[Math.floor(Math.random() * cat.length)];
+      }
+      elements.openMusic.pause();
+      elements.boxVideo.pause();
+      playWinSound();
+      showResult();
+      opening = false;
+      
+      if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+        elements.openBtn.disabled = false;
+      } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
+        elements.monetizationMessage.style.display = 'block';
+      } else if (hasLifetimeAccess) {
+        elements.openBtn.disabled = false;
+      }
+    }
+
+    function showResult() {
+      elements.resultCounter.textContent = `PROMESSA REVELADA`;
+      elements.resultText.textContent = currentPromise.texto;
+      elements.resultVerse.textContent = currentPromise.versiculo ? `— ${currentPromise.versiculo}` : '';
+      elements.result.classList.add('show');
+    }
+
+    function playWinSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        [800, 900, 1000].forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.1);
+          osc.start(audioCtx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + i * 0.1 + 0.3);
+          osc.stop(audioCtx.currentTime + i * 0.1 + 0.3);
+        });
+      } catch (e) { 
+        console.warn('API de Áudio não suportada.'); 
+      }
+    }
+
+    function shareWhatsApp() {
+      if (!currentPromise) return;
+      
+      const viralText = `🙌 Deus falou comigo através desta promessa!\n\n✨ "${currentPromise.texto}"\n${currentPromise.versiculo ? `— ${currentPromise.versiculo}\n` : ''}\nAcesse e veja o que Deus quer falar com você também: https://caixadapromessa.com.br`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(viralText)}`, '_blank');
+    }
+
+    // INICIAR CARREGAMENTO
+    loadPromises();
+  });
+
+  // Event listeners globais
+  window.addEventListener('resize', setVhUnit);
+  window.addEventListener('load', setVhUnit);
+
+  // Registrar Service Worker
+  if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(error => {
+          console.error('Falha ao registrar o Service Worker:', error);
+        });
+    });
+  }
+</script>
+</body>
+</html>

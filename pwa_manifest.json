@@ -1,0 +1,25 @@
+{
+  "name": "Caixa da Promessa - Promessas Divinas",
+  "short_name": "Caixa Promessa",
+  "description": "Mais de 8.000 promessas bíblicas para sua vida",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#7dd3fc",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
