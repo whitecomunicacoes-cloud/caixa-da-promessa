@@ -152,45 +152,6 @@
     font-weight: 500;
   }
 
-  .benefits-section {
-    text-align: center; 
-    padding: 12px 15px; 
-    background: rgba(123, 211, 252, 0.1); 
-    border-radius: 15px; 
-    margin: 10px; 
-    border: 1px solid rgba(123, 211, 252, 0.3);
-    animation: glow 2s infinite alternate;
-  }
-
-  @keyframes glow {
-    from { box-shadow: 0 0 10px rgba(123, 211, 252, 0.3); }
-    to { box-shadow: 0 0 20px rgba(123, 211, 252, 0.5); }
-  }
-
-  .benefits-title {
-    color: #7dd3fc; 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    margin-bottom: 8px;
-  }
-
-  .benefits-grid {
-    display: flex; 
-    justify-content: space-around; 
-    color: rgba(220, 210, 255, 0.9); 
-    font-size: 0.8rem;
-  }
-
-  .benefit-item {
-    text-align: center;
-    flex: 1;
-  }
-
-  .benefit-emoji {
-    font-size: 1.2rem; 
-    margin-bottom: 4px;
-  }
-
   .video-section {
     flex: 1; 
     display: flex; 
@@ -367,45 +328,12 @@
     font-size: 1rem;
   }
 
-  /* Botão de ganhar bônus */
-  .bonus-btn {
-    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 8px;
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  /* Mensagem de upsell */
-  .upsell-message {
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.3);
-    border-radius: 12px;
-    padding: 15px;
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .upsell-message p {
-    color: #fbbf24;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-  }
-
   /* Media query para telas menores */
   @media (max-height: 700px) {
     .header h1 { font-size: 1.5rem; margin-bottom: 0.3rem; }
     .header p { font-size: 0.9rem; }
     .category-label { font-size: 1rem; }
     .category-select { padding: 0.8rem; font-size: 1rem; background-position: right 0.8rem center; }
-    .benefits-section { padding: 8px 12px; }
-    .benefits-title { font-size: 0.8rem; }
-    .benefits-grid { font-size: 0.75rem; }
     .video-container { max-width: 240px; }
     #openBtn { font-size: 1.2rem; padding: 1rem; }
   }
@@ -469,14 +397,6 @@
       console.log("🔓 Evento Pixel: CompleteRegistration disparado");
     }
   });
-
-  // 5️⃣ Evento - Ganhou bônus
-  document.addEventListener("click", function (e) {
-    if (e.target && e.target.classList.contains('bonus-btn')) {
-      fbq('track', 'CompleteRegistration');
-      console.log("🎁 Evento Pixel: CompleteRegistration (Bonus) disparado");
-    }
-  });
 </script>
 
 <!-- End Meta Pixel Code -->
@@ -527,17 +447,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         content_type: 'product'
       });
       console.log("🔓 Evento TikTok: CompletePayment disparado");
-    }
-  });
-
-  // 4️⃣ Ganhou bônus
-  document.addEventListener("click", function (e) {
-    if (e.target && e.target.classList.contains('bonus-btn')) {
-      ttq.track('ViewContent', {
-        contents: [],
-        content_type: 'product'
-      });
-      console.log("🎁 Evento TikTok: ViewContent (Bonus) disparado");
     }
   });
 
@@ -593,19 +502,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   });
 
-  // 4️⃣ Evento - Ganhou bônus → "engagement"
-  document.addEventListener("click", function (e) {
-    if (e.target && e.target.classList.contains('bonus-btn')) {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-11222711870/engagement',
-        'value': 0.5,
-        'currency': 'BRL'
-      });
-      console.log("🎁 Evento Google: engagement (Bonus) disparado");
-    }
-  });
-
-  // 5️⃣ Evento - Page View → "Visualização de página"
+  // 4️⃣ Evento - Page View → "Visualização de página"
   window.addEventListener('load', function() {
     gtag('event', 'conversion', {
       'send_to': 'AW-11222711870/Visualização de página',
@@ -615,6 +512,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     console.log("🌐 Evento Google: Visualização de página disparado");
   });
 </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11222711870"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11222711870');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
+     crossorigin="anonymous"></script>
 
 </head>
 
@@ -646,7 +556,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 			animation: fadeIn 0.6s ease;
 		  ">
 			<img src="logo.png" alt="Caixa da Promessa" style="width: 64px; height: 64px; border-radius: 12px; margin-bottom: 10px;">
-			<p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px;">✨ 5 Promessas Diárias + Acesso Vitalício</p>
+			<p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px;">✨ Mais de 8.000 Promessas Para Sua Vida!</p>
 			<button id="installBtn" style="
 			  background: #fbbf24;
 			  border: none;
@@ -700,7 +610,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <div class="container">
   <div class="header">
     <h1>✨ CAIXA DA PROMESSA ✨</h1>
-    <p>5 Promessas Diárias + Acesso Vitalício</p>
+    <p>Mais de 8.000 Promessas Para Sua Vida</p>
   </div>
 
   <div class="category-section">
@@ -716,25 +626,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div class="loading-message" id="loadingMessage">Carregando promessas...</div>
   </div>
 
-  <!-- SEÇÃO DE BENEFÍCIOS (SUBSTITUI O ANÚNCIO) -->
-  <div class="benefits-section">
-    <div class="benefits-title">⭐ BENEFÍCIOS EXCLUSIVOS</div>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <div class="benefit-emoji">📖</div>
-        <div>8.000+ Promessas</div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-emoji">✨</div>
-        <div>5 Diárias Grátis</div>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-emoji">💫</div>
-        <div>Acesso Vitalício</div>
-      </div>
-    </div>
-  </div>
-
   <div class="video-section">
     <div class="video-container">
       <video class="box-video" id="boxVideo" preload="metadata" playsinline muted>
@@ -746,50 +637,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   <div class="buttons-section">
     <button id="openBtn" disabled>Abrir a Caixa</button>
-    
-    <!-- Mensagem de Upsell Não-Invasivo -->
-    <div id="upsellMessage" class="upsell-message" style="display:none;">
-      <p>✨ Restam <span id="remainingToday">2</span> promessas hoje! Acesso vitalício por R$29,00</p>
-      <a href="https://wa.me/5531986720591?text=Olá! Quero o ACESSO VITALÍCIO da Caixa da Promessa por R$29,00 e receber todas as 8.000+ promessas!" 
-         target="_blank" 
-         style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin: 10px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
-        💬 COMPRAR AGORA NO WHATSAPP
-      </a>
-      <button class="bonus-btn" onclick="showBonusOptions()">
-        🎁 Ganhar +1 Promessa Hoje
-      </button>
-    </div>
-    
-    <!-- Mensagem de limite atingido -->
     <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
-      <p>🎯 Você atingiu o limite de 5 promessas gratuitas por hoje!</p>
-      
-      <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(34, 197, 94, 0.2)); padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px solid rgba(251, 191, 36, 0.3);">
-        <p style="color: #fbbf24; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">
-          💫 ACESSO VITALÍCIO - R$29,00
-        </p>
-        <p style="color: #86efac; margin-bottom: 15px;">
-          ✅ +8.000 promessas ilimitadas<br>
-          ✅ Todas as categorias liberadas<br>
-          ✅ Sem limites diários<br>
-          ✅ Atualizações gratuitas
-        </p>
-        
-        <a href="https://wa.me/5531986720591?text=Olá! Quero o ACESSO VITALÍCIO da Caixa da Promessa por R$29,00 e receber todas as 8.000+ promessas!" 
-           target="_blank" 
-           style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin: 15px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
-          💬 COMPRAR AGORA NO WHATSAPP
-        </a>
-        
-        <div style="display: flex; gap: 10px; margin-top: 15px;">
-          <button id="unlockAccessBtn" style="flex: 1; background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 2px solid #fbbf24; padding: 12px; border-radius: 10px; font-weight: bold;">
-            🔓 Já comprei - Liberar
-          </button>
-          <button class="bonus-btn" onclick="showBonusOptions()" style="flex: 1;">
-            🎁 Ganhar +1 Hoje
-          </button>
-        </div>
-      </div>
+      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, entre em contato para adquirir o acesso vitalício por R$29,00.</p>
+      <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
+   target="_blank" 
+   style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
+  <span class="arrow">✨</span>
+  Clique aqui para adquirir!
+  <span class="arrow">✨</span>
+</a>
+      <button id="unlockAccessBtn">Já adquiri - Liberar Acesso</button>
     </div>
   </div>
 </div>
@@ -810,23 +667,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </div>
 
 <script>
-  // ======================
-  // SISTEMA HÍBRIDO INTELIGENTE - PÓS-TRIAL
-  // ======================
-
-  // CONFIGURAÇÃO ATUAL - PÓS TRIAL
-  const MAX_FREE_VERSES = 5; // 5 promessas diárias
-  const DAILY_RESET = true;
-
-  // Sistema de Fidelidade
-  const userStats = {
-    daysStreak: 0,
-    totalShares: 0,
-    bonusActions: 0,
-    lastLogin: null,
-    bonusVerses: 0
-  };
-
   // Ajuste de altura para VH em mobile
   function setVhUnit() {
     let vh = window.innerHeight * 0.01;
@@ -868,522 +708,265 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       boxVideo: document.getElementById('boxVideo'),
       loadingMessage: document.getElementById('loadingMessage'),
       monetizationMessage: document.getElementById('monetizationMessage'),
-      upsellMessage: document.getElementById('upsellMessage'),
       freeVersesCounter: document.getElementById('freeVersesCounter'),
       unlockAccessBtn: document.getElementById('unlockAccessBtn')
     };
 
-    // Inicializar sistema de uso diário
-    initializeDailySystem();
+    let promises = {};
+    let opening = false;
+    let freeVersesCount = parseInt(localStorage.getItem('freeVersesCount') || '0');
+    let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
+    const MAX_FREE_VERSES = 20;
+
+    let selectedCategory = 'spiritual';
+    let currentPromise = null;
+
+    const categories = {
+      spiritual: { name: 'Espiritual', emoji: '🙏', file: 'promessas_espiritual.json' },
+      family: { name: 'Família', emoji: '👨‍👩‍👧', file: 'promessas_familia.json' },
+      health: { name: 'Saúde', emoji: '💖', file: 'promessas_saude.json' },
+      business: { name: 'Negócios', emoji: '💼', file: 'promessas_negocios.json' },
+      money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
+    };
+
+    // Atualizar contador inicial
     updateFreeVersesCounter();
 
-    // Carregar dados do usuário
-    loadUserStats();
+    function updateFreeVersesCounter() {
+      if (hasLifetimeAccess) {
+        elements.freeVersesCounter.textContent = "Acesso vitalício ativado!";
+      } else {
+        elements.freeVersesCounter.textContent = `Versículos gratuitos restantes: ${MAX_FREE_VERSES - freeVersesCount}`;
+      }
+    }
 
-    // Verificar se é o primeiro acesso do dia
-    checkDailyReset();
+    async function loadPromises() {
+      elements.loadingMessage.textContent = "Carregando promessas...";
+      try {
+        const loadPromises = Object.entries(categories).map(async ([key, config]) => {
+          try {
+            const response = await fetch(config.file);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            promises[key] = data;
+            return { key, success: true };
+          } catch (error) {
+            console.warn(`❌ Falha ao carregar ${config.name}: ${error.message}`);
+            promises[key] = getDefaultPromises(key);
+            return { key, success: false };
+          }
+        });
+
+        const results = await Promise.all(loadPromises);
+        const successful = results.filter(r => r.success).length;
+        
+        if (successful > 0) {
+          elements.loadingMessage.textContent = `✅ ${successful}/${Object.keys(categories).length} categorias carregadas | Pronto!`;
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
+            elements.openBtn.disabled = false;
+          }
+        } else {
+          elements.loadingMessage.textContent = "❌ Erro ao carregar. Usando promessas locais.";
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
+            elements.openBtn.disabled = false;
+          }
+        }
+      } catch (error) {
+        elements.loadingMessage.textContent = "❌ Erro geral. Recarregue a página.";
+        console.error('Erro geral:', error);
+      }
+    }
+
+    function getDefaultPromises(category) {
+      const defaults = {
+        spiritual: [{ texto: "Deus te ama incondicionalmente.", versiculo: "Jeremias 31:3" }],
+        family: [{ texto: "Sua família será abençoada.", versiculo: "Salmos 128" }],
+        health: [{ texto: "O Senhor é a sua cura e a sua força.", versiculo: "Êxodo 15:26" }],
+        business: [{ texto: "Seu trabalho e seus projetos prosperarão.", versiculo: "Deuteronômio 28:8" }],
+        money: [{ texto: "Deus suprirá todas as suas necessidades.", versiculo: "Filipenses 4:19" }]
+      };
+      return defaults[category] || [{ texto: "Deus tem um plano maravilhoso para a sua vida.", versiculo: "Jeremias 29:11" }];
+    }
 
     // Event Listeners
+    elements.categorySelect.addEventListener('change', (e) => {
+      selectedCategory = e.target.value;
+    });
+
     elements.openBtn.addEventListener('click', openBox);
-    elements.closeResult.addEventListener('click', closeResult);
-    elements.shareWhatsApp.addEventListener('click', shareOnWhatsApp);
-    elements.unlockAccessBtn.addEventListener('click', unlockAccess);
+    elements.closeResult.addEventListener('click', () => {
+      elements.result.classList.remove('show');
+    });
 
-    // Verificar se o usuário já tem acesso vitalício
-    if (hasLifetimeAccess()) {
-      showLifetimeAccess();
-    }
-
-    // Atualizar interface baseada no uso atual
-    updateInterfaceBasedOnUsage();
-
-    // Simular carregamento das promessas
-    setTimeout(() => {
-      elements.loadingMessage.textContent = 'Promessas carregadas!';
-      elements.openBtn.disabled = false;
-    }, 2000);
-
-    // Ajustar altura quando a janela for redimensionada
-    window.addEventListener('resize', setVhUnit);
-  });
-
-  // ======================
-  // SISTEMA DE USO DIÁRIO
-  // ======================
-
-  function initializeDailySystem() {
-    if (!localStorage.getItem('dailyUsage')) {
-      localStorage.setItem('dailyUsage', JSON.stringify({
-        date: new Date().toDateString(),
-        count: 0,
-        bonusUsed: 0
-      }));
-    }
-  }
-
-  function getTodayUsage() {
-    const dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0}');
-    if (dailyUsage.date !== new Date().toDateString()) {
-      return 0;
-    }
-    return dailyUsage.count;
-  }
-
-  function getRemainingVersesToday() {
-    const dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0}');
-    if (dailyUsage.date !== new Date().toDateString()) {
-      return MAX_FREE_VERSES;
-    }
+    elements.shareWhatsApp.addEventListener('click', shareWhatsApp);
     
-    const used = dailyUsage.count;
-    const remaining = MAX_FREE_VERSES - used + (userStats.bonusVerses || 0) - (dailyUsage.bonusUsed || 0);
-    return Math.max(0, remaining);
-  }
-
-  function incrementTodayUsage() {
-    const today = new Date().toDateString();
-    let dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0}');
-    
-    if (dailyUsage.date !== today) {
-      dailyUsage = { date: today, count: 0, bonusUsed: 0 };
+    // Configurar o botão de liberar acesso
+    if (elements.unlockAccessBtn) {
+      elements.unlockAccessBtn.addEventListener('click', unlockAccess);
     }
-    
-    // Verificar se usa um bônus primeiro
-    if (userStats.bonusVerses > 0 && dailyUsage.bonusUsed < userStats.bonusVerses) {
-      dailyUsage.bonusUsed++;
-    } else {
-      dailyUsage.count++;
-    }
-    
-    localStorage.setItem('dailyUsage', JSON.stringify(dailyUsage));
-    return dailyUsage.count + dailyUsage.bonusUsed;
-  }
 
-  function checkDailyReset() {
-    const today = new Date().toDateString();
-    const dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0}');
-    
-    if (dailyUsage.date !== today) {
-      // Novo dia - resetar contador
-      localStorage.setItem('dailyUsage', JSON.stringify({
-        date: today,
-        count: 0,
-        bonusUsed: 0
-      }));
-      
-      // Atualizar streak
-      updateUserStreak();
-      
-      // Mostrar mensagem de boas-vindas
-      showWelcomeMessage();
-      
-      // Atualizar interface
-      updateFreeVersesCounter();
-      updateInterfaceBasedOnUsage();
-    }
-  }
-
-  function updateFreeVersesCounter() {
-    const counter = document.getElementById('freeVersesCounter');
-    if (counter) {
-      const remaining = getRemainingVersesToday();
-      
-      if (hasLifetimeAccess()) {
-        counter.textContent = `⭐ ACESSO VITALÍCIO ATIVO - ILIMITADO`;
+    function unlockAccess() {
+      const code = prompt("Digite o código de liberação recebido após o pagamento:");
+      if (code && code.trim().toUpperCase() === "REVELA29") {
+        localStorage.setItem('hasLifetimeAccess', 'true');
+        hasLifetimeAccess = true;
+        elements.monetizationMessage.style.display = 'none';
+        elements.openBtn.disabled = false;
+        updateFreeVersesCounter();
+        alert("✅ Acesso vitalício liberado com sucesso!");
       } else {
-        counter.textContent = `📊 ${remaining} promessa(s) restante(s) hoje`;
-        
-        // Adicionar informação de bônus se houver
-        if (userStats.bonusVerses > 0) {
-          counter.textContent += ` (+${userStats.bonusVerses} bônus)`;
-        }
+        alert("❌ Código incorreto. Verifique e tente novamente.");
       }
     }
-  }
 
-  function updateInterfaceBasedOnUsage() {
-    const usedToday = getTodayUsage();
-    const remaining = getRemainingVersesToday();
-    const upsellMessage = document.getElementById('upsellMessage');
-    const monetizationMessage = document.getElementById('monetizationMessage');
-    const openBtn = document.getElementById('openBtn');
+    function openBox() {
+      if (opening || !promises[selectedCategory]?.length) return;
 
-    if (hasLifetimeAccess()) {
-      // Usuário com acesso vitalício
-      upsellMessage.style.display = 'none';
-      monetizationMessage.style.display = 'none';
-      openBtn.disabled = false;
-      openBtn.textContent = 'Abrir a Caixa (Ilimitado)';
-    } else if (remaining <= 0) {
-      // Limite atingido
-      upsellMessage.style.display = 'none';
-      monetizationMessage.style.display = 'block';
-      openBtn.disabled = true;
-      openBtn.textContent = 'Limite Atingido Hoje';
-    } else if (usedToday >= 2) {
-      // Mostrar upsell após 2 usos
-      upsellMessage.style.display = 'block';
-      monetizationMessage.style.display = 'none';
-      openBtn.disabled = false;
-      document.getElementById('remainingToday').textContent = remaining;
-    } else {
-      // Uso normal
-      upsellMessage.style.display = 'none';
-      monetizationMessage.style.display = 'none';
-      openBtn.disabled = false;
-      openBtn.textContent = 'Abrir a Caixa';
-    }
-  }
+      // Verificar limite
+      if (freeVersesCount >= MAX_FREE_VERSES && !hasLifetimeAccess) {
+        elements.openBtn.disabled = true;
+        elements.monetizationMessage.style.display = 'block';
+        return;
+      }
 
-  // ======================
-  // SISTEMA DE FIDELIDADE
-  // ======================
-
-  function loadUserStats() {
-    const savedStats = localStorage.getItem('userStats');
-    if (savedStats) {
-      Object.assign(userStats, JSON.parse(savedStats));
-    }
-  }
-
-  function saveUserStats() {
-    localStorage.setItem('userStats', JSON.stringify(userStats));
-  }
-
-  function updateUserStreak() {
-    const today = new Date();
-    const lastLogin = userStats.lastLogin ? new Date(userStats.lastLogin) : null;
-    
-    if (lastLogin) {
-      const diffTime = today - lastLogin;
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      opening = true;
+      elements.openBtn.disabled = true;
       
-      if (diffDays === 1) {
-        userStats.daysStreak++;
-        // Recompensa por streak
-        if (userStats.daysStreak % 7 === 0) {
-          userStats.bonusVerses = (userStats.bonusVerses || 0) + 1;
-          showBonusMessage(`🔥 Sequência de ${userStats.daysStreak} dias! +1 promessa bônus!`);
-        }
-      } else if (diffDays > 1) {
-        userStats.daysStreak = 1; // Reset streak se perdeu um dia
-        userStats.bonusVerses = 0; // Reset bônus
+      // Incrementar contador apenas se não tiver acesso vitalício
+      if (!hasLifetimeAccess) {
+        freeVersesCount++;
+        localStorage.setItem('freeVersesCount', freeVersesCount.toString());
+        updateFreeVersesCounter();
       }
-    } else {
-      userStats.daysStreak = 1;
-    }
-    
-    userStats.lastLogin = today.toISOString();
-    saveUserStats();
-  }
 
-  function addBonusVerse() {
-    userStats.bonusVerses = (userStats.bonusVerses || 0) + 1;
-    saveUserStats();
-    updateFreeVersesCounter();
-    updateInterfaceBasedOnUsage();
-    showBonusMessage("🎁 +1 promessa bônus adicionada!");
-  }
-
-  // ======================
-  // SISTEMA DE BÔNUS
-  // ======================
-
-  function showBonusOptions() {
-    const bonusHTML = `
-      <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;">
-        <div style="background:linear-gradient(135deg, #1a1f4d, #0a0e27); padding:30px; border-radius:20px; text-align:center; color:white; max-width:400px; width:100%; border: 2px solid rgba(251, 191, 36, 0.3);">
-          <h3 style="color:#fbbf24; margin-bottom:20px;">🎁 Ganhe +1 Promessa Hoje!</h3>
-          
-          <div style="background:rgba(251, 191, 36, 0.1); padding:15px; border-radius:10px; margin:15px 0;">
-            <p style="margin-bottom:10px;">📲 <strong>Indique para 1 amigo</strong></p>
-            <button onclick="shareToFriend()" style="background:#fbbf24; color:#0a0e27; border:none; padding:12px 20px; border-radius:8px; width:100%; font-weight:bold; margin-bottom:10px;">
-              Compartilhar App
-            </button>
-          </div>
-          
-          <div style="background:rgba(34, 197, 94, 0.1); padding:15px; border-radius:10px; margin:15px 0;">
-            <p style="margin-bottom:10px;">⭐ <strong>Avalie nosso app</strong></p>
-            <button onclick="rateApp()" style="background:#22c55e; color:white; border:none; padding:12px 20px; border-radius:8px; width:100%; font-weight:bold;">
-              Fazer Avaliação
-            </button>
-          </div>
-          
-          <button onclick="closeBonus()" style="background:transparent; border:1px solid #fbbf24; color:#fbbf24; padding:12px 20px; border-radius:8px; width:100%; margin-top:15px;">
-            Fechar
-          </button>
-        </div>
-      </div>
-    `;
-    
-    const bonusDiv = document.createElement('div');
-    bonusDiv.innerHTML = bonusHTML;
-    bonusDiv.id = 'bonusModal';
-    document.body.appendChild(bonusDiv);
-  }
-
-  function shareToFriend() {
-    const shareText = `✨ Descubra as promessas de Deus para sua vida! \n\nCaixa da Promessa - 5 promessas divinas gratuitas por dia!\n\nhttps://caixadapromessa.com.br`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
-    addBonusVerse();
-    closeBonus();
-  }
-
-  function rateApp() {
-    // Simular avaliação
-    addBonusVerse();
-    closeBonus();
-    alert('⭐ Obrigado pela avaliação! +1 promessa adicionada.');
-  }
-
-  function closeBonus() {
-    const modal = document.getElementById('bonusModal');
-    if (modal) modal.remove();
-  }
-
-  // ======================
-  // FUNÇÕES PRINCIPAIS
-  // ======================
-
-  function openBox() {
-    if (hasLifetimeAccess() || getRemainingVersesToday() > 0) {
-      playBoxAnimation();
-    } else {
-      showLimitReachedMessage();
-    }
-  }
-
-  function playBoxAnimation() {
-    const elements = {
-      openBtn: document.getElementById('openBtn'),
-      boxVideo: document.getElementById('boxVideo'),
-      openMusic: document.getElementById('openMusic')
-    };
-
-    elements.openBtn.disabled = true;
-    elements.boxVideo.currentTime = 0;
-    elements.openMusic.currentTime = 0;
-
-    // Tentar reproduzir música
-    elements.openMusic.play().catch(e => {
-      console.log('Autoplay bloqueado, aguardando interação');
-    });
-
-    // Reproduzir vídeo
-    elements.boxVideo.play();
-
-    // Quando o vídeo terminar, mostrar resultado
-    elements.boxVideo.onended = function() {
-      showRandomPromise();
-      elements.openMusic.pause();
+      // Selecionar promessa aleatória
+      const cat = promises[selectedCategory];
+      currentPromise = cat[Math.floor(Math.random() * cat.length)];
+      
+      // Tocar áudio e vídeo APENAS QUANDO O USUÁRIO CLICAR
       elements.openMusic.currentTime = 0;
-    };
-  }
-
-  function showRandomPromise() {
-    const category = document.getElementById('categorySelect').value;
-    const promise = getRandomPromise(category);
-    
-    // Incrementar uso diário
-    if (!hasLifetimeAccess()) {
-      incrementTodayUsage();
-    }
-    
-    // Mostrar resultado
-    const elements = {
-      result: document.getElementById('result'),
-      resultText: document.getElementById('resultText'),
-      resultVerse: document.getElementById('resultVerse'),
-      resultCounter: document.getElementById('resultCounter')
-    };
-
-    elements.resultText.textContent = promise.text;
-    elements.resultVerse.textContent = promise.verse;
-    
-    if (hasLifetimeAccess()) {
-      elements.resultCounter.textContent = `PROMESSA REVELADA ✨`;
-    } else {
-      elements.resultCounter.textContent = `Promessa ${getTodayUsage()}/${MAX_FREE_VERSES} hoje`;
-    }
-    
-    elements.result.classList.add('show');
-    
-    // Atualizar interface
-    updateFreeVersesCounter();
-    updateInterfaceBasedOnUsage();
-    
-    // Registrar evento de analytics
-    trackPromiseOpened(category);
-  }
-
-  function getRandomPromise(category) {
-    // Simulação - na implementação real, buscar do JSON
-    const promises = {
-      spiritual: [
-        { text: "Deus te dará força para vencer todos os desafios", verse: "Filipenses 4:13" },
-        { text: "A paz de Deus guardará seu coração e sua mente", verse: "Filipenses 4:7" }
-      ],
-      family: [
-        { text: "Sua família será abençoada e protegida", verse: "Salmos 128:1-4" },
-        { text: "Deus restaurará os relacionamentos da sua família", verse: "Malaquias 4:6" }
-      ],
-      health: [
-        { text: "O Senhor te dará saúde e renovará suas forças", verse: "Isaías 40:31" },
-        { text: "Deus te curará e restaurará sua saúde", verse: "Jeremias 30:17" }
-      ],
-      business: [
-        { text: "Seus negócios prosperarão e você terá sucesso", verse: "Josué 1:8" },
-        { text: "Deus abrirá portas de oportunidades para você", verse: "Apocalipse 3:8" }
-      ],
-      money: [
-        { text: "Deus suprirá todas as suas necessidades financeiras", verse: "Filipenses 4:19" },
-        { text: "Você será cabeça e não cauda, emprestará e não tomará emprestado", verse: "Deuteronômio 28:13" }
-      ]
-    };
-
-    const categoryPromises = promises[category] || promises.spiritual;
-    return categoryPromises[Math.floor(Math.random() * categoryPromises.length)];
-  }
-
-  function closeResult() {
-    document.getElementById('result').classList.remove('show');
-    document.getElementById('openBtn').disabled = false;
-  }
-
-  function shareOnWhatsApp() {
-    const resultText = document.getElementById('resultText').textContent;
-    const resultVerse = document.getElementById('resultVerse').textContent;
-    const shareText = `✨ Recebi esta promessa divina através do Caixa da Promessa:\n\n"${resultText}"\n\n${resultVerse}\n\n📱 Baixe o app: 5 promessas diárias gratuitas!\nhttps://caixadapromessa.com.br`;
-    
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-    window.open(whatsappUrl, '_blank');
-    
-    // Registrar compartilhamento
-    userStats.totalShares++;
-    saveUserStats();
-    
-    // Recompensa por compartilhar a cada 3 vezes
-    if (userStats.totalShares % 3 === 0) {
-      addBonusVerse();
-      showBonusMessage("🎁 Você ganhou +1 promessa bônus por compartilhar!");
-    }
-  }
-
-  // ======================
-  // SISTEMA DE MONETIZAÇÃO
-  // ======================
-
-  function hasLifetimeAccess() {
-    return localStorage.getItem('lifetimeAccess') === 'true';
-  }
-
-  function unlockAccess() {
-    const code = prompt("Digite o código de liberação recebido via WhatsApp:");
-    if (code && code.trim().toUpperCase() === "PROMESSA29") {
-      localStorage.setItem('lifetimeAccess', 'true');
-      showLifetimeAccess();
-      showBonusMessage("🎉 Acesso vitalício liberado! Agora você tem acesso ilimitado!");
+      elements.openMusic.play().catch(console.warn);
       
-      // Disparar evento de conversão
-      gtag('event', 'purchase', {
-        transaction_id: 'LP_' + Date.now(),
-        value: 29.00,
-        currency: 'BRL',
-        items: [{
-          item_id: 'lifetime_access',
-          item_name: 'Acesso Vitalício Caixa da Promessa'
-        }]
+      // RESETAR E TOCAR O VÍDEO DA CAIXA ABRINDO
+      elements.boxVideo.currentTime = 0;
+      elements.boxVideo.loop = false;
+      
+      elements.boxVideo.play().then(() => {
+        console.log("🎬 Vídeo da caixa iniciado");
+      }).catch((error) => {
+        console.warn("❌ Autoplay do vídeo bloqueado:", error);
+        showResultDirectly();
       });
-    } else {
-      alert("❌ Código inválido. Verifique e tente novamente.");
+      
+      elements.boxVideo.onended = finishRevelation;
+      
+      // Fallback timeout
+      setTimeout(() => {
+        if(opening) {
+          console.log("⏰ Fallback - mostrando resultado após timeout");
+          finishRevelation();
+        }
+      }, 8000);
     }
-  }
 
-  function showLifetimeAccess() {
-    const counter = document.getElementById('freeVersesCounter');
-    if (counter) {
-      counter.textContent = '⭐ ACESSO VITALÍCIO ATIVO - ILIMITADO';
+    function finishRevelation() {
+      if (!opening) return;
+      
+      elements.openMusic.pause();
+      elements.boxVideo.pause();
+      playWinSound();
+      showResult();
+      
+      setTimeout(() => {
+        opening = false;
+        if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+          elements.openBtn.disabled = false;
+        } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
+          elements.monetizationMessage.style.display = 'block';
+        } else if (hasLifetimeAccess) {
+          elements.openBtn.disabled = false;
+        }
+      }, 1000);
     }
-    document.getElementById('monetizationMessage').style.display = 'none';
-    document.getElementById('upsellMessage').style.display = 'none';
-    document.getElementById('openBtn').disabled = false;
-    document.getElementById('openBtn').textContent = 'Abrir a Caixa (Ilimitado)';
-  }
 
-  function showLimitReachedMessage() {
-    alert("📊 Você atingiu o limite de 5 promessas gratuitas por hoje. Volte amanhã ou adquira o acesso vitalício!");
-  }
-
-  function showBonusMessage(message) {
-    // Criar notificação temporária
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #fbbf24, #f97316);
-      color: #0a0e27;
-      padding: 15px 25px;
-      border-radius: 12px;
-      font-weight: bold;
-      z-index: 10000;
-      animation: slideDown 0.5s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    `;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.remove();
-    }, 3000);
-  }
-
-  function showWelcomeMessage() {
-    if (userStats.daysStreak > 1) {
-      showBonusMessage(`🔥 Bem-vindo de volta! Sequência de ${userStats.daysStreak} dias!`);
+    function showResultDirectly() {
+      const cat = promises[selectedCategory];
+      if (!currentPromise) {
+        currentPromise = cat[Math.floor(Math.random() * cat.length)];
+      }
+      elements.openMusic.pause();
+      elements.boxVideo.pause();
+      playWinSound();
+      showResult();
+      opening = false;
+      
+      if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+        elements.openBtn.disabled = false;
+      } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
+        elements.monetizationMessage.style.display = 'block';
+      } else if (hasLifetimeAccess) {
+        elements.openBtn.disabled = false;
+      }
     }
-  }
 
-  function trackPromiseOpened(category) {
-    // Registrar abertura de promessa no analytics
-    gtag('event', 'view_item', {
-      items: [{
-        item_id: category,
-        item_name: 'Promise_' + category,
-        category: category
-      }]
+    function showResult() {
+      elements.resultCounter.textContent = `PROMESSA REVELADA`;
+      elements.resultText.textContent = currentPromise.texto;
+      elements.resultVerse.textContent = currentPromise.versiculo ? `— ${currentPromise.versiculo}` : '';
+      elements.result.classList.add('show');
+    }
+
+    function playWinSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        [800, 900, 1000].forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.1);
+          osc.start(audioCtx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + i * 0.1 + 0.3);
+          osc.stop(audioCtx.currentTime + i * 0.1 + 0.3);
+        });
+      } catch (e) { 
+        console.warn('API de Áudio não suportada.'); 
+      }
+    }
+
+    function shareWhatsApp() {
+      if (!currentPromise) return;
+      
+      const viralText = `🙌 *Deus falou comigo através desta promessa!*\n\n✨ "${currentPromise.texto}"\n${currentPromise.versiculo ? `— ${currentPromise.versiculo}\n` : ''}\n*Acesse e veja o que Deus quer falar com você também:* https://caixadapromessa.com.br`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(viralText)}`, '_blank');
+    }
+
+    // INICIAR CARREGAMENTO
+    loadPromises();
+  });
+
+  // Event listeners globais
+  window.addEventListener('resize', setVhUnit);
+  window.addEventListener('load', setVhUnit);
+
+  // Registrar Service Worker
+  if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(error => {
+          console.error('Falha ao registrar o Service Worker:', error);
+        });
     });
   }
-
-  // Prevenir gesto de zoom em double-tap
-  document.addEventListener('touchstart', function(event) {
-    if (event.touches.length > 1) {
-      event.preventDefault();
-    }
-  });
-
-  let lastTouchEnd = 0;
-  document.addEventListener('touchend', function(event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    lastTouchEnd = now;
-  }, false);
-
-  // Prevenir zoom com dois dedos
-  document.addEventListener('gesturestart', function(e) {
-    e.preventDefault();
-  });
-
-  document.addEventListener('gesturechange', function(e) {
-    e.preventDefault();
-  });
-
-  document.addEventListener('gestureend', function(e) {
-    e.preventDefault();
-  });
 </script>
 </body>
 </html>
