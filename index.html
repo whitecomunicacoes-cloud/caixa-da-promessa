@@ -328,29 +328,6 @@
     font-size: 1rem;
   }
 
-  /* Bonus actions */
-  .bonus-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-  }
-
-  .bonus-btn {
-    flex: 1;
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-  }
-
-  .bonus-btn:hover {
-    transform: translateY(-2px);
-  }
-
   /* Media query para telas menores */
   @media (max-height: 700px) {
     .header h1 { font-size: 1.5rem; margin-bottom: 0.3rem; }
@@ -370,15 +347,6 @@
       animation: blink 1s infinite;
       margin: 0 4px;
     }
-
-  /* Ad container */
-  .ad-container {
-    margin: 15px 0;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    text-align: center;
-  }
 
 </style>
 
@@ -669,20 +637,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   <div class="buttons-section">
     <button id="openBtn" disabled>Abrir a Caixa</button>
-    
-    <!-- Container de Anúncios -->
-    <div class="ad-container" id="adContainer">
-      <!-- Google AdSense será injetado aqui -->
-    </div>
-
-    <!-- Ações de Bônus -->
-    <div class="bonus-actions" id="bonusActions" style="display: none;">
-      <button class="bonus-btn" id="watchAdBonus">📺 Assistir +1</button>
-      <button class="bonus-btn" id="shareBonus">📤 Compartilhar +1</button>
-    </div>
-
     <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
-      <p>Você atingiu o limite de versículos gratuitos de hoje. Para continuar recebendo promessas divinas ilimitadas, entre em contato para adquirir o acesso vitalício por R$29,00.</p>
+      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, entre em contato para adquirir o acesso vitalício por R$29,00.</p>
       <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
    target="_blank" 
    style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
@@ -733,38 +689,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   }
 
-  // Verificar se está no período de teste (6 meses)
-  function isTrialPeriodActive() {
-    const trialStart = localStorage.getItem('trialStartDate');
-    if (!trialStart) {
-      // Primeiro acesso - iniciar trial
-      localStorage.setItem('trialStartDate', new Date().toISOString());
-      localStorage.setItem('hasTrialAccess', 'true');
-      return true;
-    }
-    
-    const startDate = new Date(trialStart);
-    const currentDate = new Date();
-    const sixMonthsLater = new Date(startDate);
-    sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
-    
-    return currentDate <= sixMonthsLater;
-  }
-
-  // Verificar reset diário
-  function getDailyReset() {
-    const today = new Date().toDateString();
-    const lastReset = localStorage.getItem('lastResetDate');
-    
-    if (lastReset !== today) {
-      localStorage.setItem('lastResetDate', today);
-      localStorage.setItem('dailyVersesUsed', '0');
-      return 0;
-    }
-    
-    return parseInt(localStorage.getItem('dailyVersesUsed') || '0');
-  }
-
   // Inicialização quando o DOM estiver carregado
   document.addEventListener('DOMContentLoaded', function() {
     setVhUnit();
@@ -785,19 +709,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       loadingMessage: document.getElementById('loadingMessage'),
       monetizationMessage: document.getElementById('monetizationMessage'),
       freeVersesCounter: document.getElementById('freeVersesCounter'),
-      unlockAccessBtn: document.getElementById('unlockAccessBtn'),
-      adContainer: document.getElementById('adContainer'),
-      bonusActions: document.getElementById('bonusActions'),
-      watchAdBonus: document.getElementById('watchAdBonus'),
-      shareBonus: document.getElementById('shareBonus')
+      unlockAccessBtn: document.getElementById('unlockAccessBtn')
     };
 
     let promises = {};
     let opening = false;
+    let freeVersesCount = parseInt(localStorage.getItem('freeVersesCount') || '0');
     let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
-    const trialActive = isTrialPeriodActive();
-    const DAILY_LIMIT = 5;
-    let dailyVersesUsed = getDailyReset();
+    const MAX_FREE_VERSES = 20;
 
     let selectedCategory = 'spiritual';
     let currentPromise = null;
@@ -816,40 +735,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     function updateFreeVersesCounter() {
       if (hasLifetimeAccess) {
         elements.freeVersesCounter.textContent = "Acesso vitalício ativado!";
-        elements.bonusActions.style.display = 'none';
-      } else if (trialActive) {
-        elements.freeVersesCounter.textContent = "✨ Período de Teste Ativo - Acesso Ilimitado!";
-        elements.bonusActions.style.display = 'none';
       } else {
-        const remaining = DAILY_LIMIT - dailyVersesUsed;
-        elements.freeVersesCounter.textContent = `Versículos hoje: ${remaining}/${DAILY_LIMIT}`;
-        
-        // Mostrar ações de bônus se tiver usado pelo menos 3
-        if (dailyVersesUsed >= 3 && remaining > 0) {
-          elements.bonusActions.style.display = 'flex';
-        } else {
-          elements.bonusActions.style.display = 'none';
-        }
-      }
-    }
-
-    // Carregar anúncios estratégicos
-    function loadStrategicAds() {
-      if (trialActive || hasLifetimeAccess) return;
-      
-      // Mostrar ads após 2 usos
-      if (dailyVersesUsed >= 2) {
-        elements.adContainer.innerHTML = `
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-6250212527742966"
-               data-ad-slot="1234567890"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        `;
+        elements.freeVersesCounter.textContent = `Versículos gratuitos restantes: ${MAX_FREE_VERSES - freeVersesCount}`;
       }
     }
 
@@ -875,12 +762,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         
         if (successful > 0) {
           elements.loadingMessage.textContent = `✅ ${successful}/${Object.keys(categories).length} categorias carregadas | Pronto!`;
-          if (hasLifetimeAccess || trialActive || dailyVersesUsed < DAILY_LIMIT) {
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
             elements.openBtn.disabled = false;
           }
         } else {
           elements.loadingMessage.textContent = "❌ Erro ao carregar. Usando promessas locais.";
-          if (hasLifetimeAccess || trialActive || dailyVersesUsed < DAILY_LIMIT) {
+          if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
+            elements.openBtn.disabled = false;
+          } else if (hasLifetimeAccess) {
             elements.openBtn.disabled = false;
           }
         }
@@ -918,10 +809,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       elements.unlockAccessBtn.addEventListener('click', unlockAccess);
     }
 
-    // Configurar ações de bônus
-    elements.watchAdBonus.addEventListener('click', addBonusFromAd);
-    elements.shareBonus.addEventListener('click', addBonusFromShare);
-
     function unlockAccess() {
       const code = prompt("Digite o código de liberação recebido após o pagamento:");
       if (code && code.trim().toUpperCase() === "REVELA29") {
@@ -929,7 +816,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         hasLifetimeAccess = true;
         elements.monetizationMessage.style.display = 'none';
         elements.openBtn.disabled = false;
-        elements.bonusActions.style.display = 'none';
         updateFreeVersesCounter();
         alert("✅ Acesso vitalício liberado com sucesso!");
       } else {
@@ -937,35 +823,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }
     }
 
-    function addBonusFromAd() {
-      // Simular watched ad
-      dailyVersesUsed = Math.max(0, dailyVersesUsed - 1);
-      localStorage.setItem('dailyVersesUsed', dailyVersesUsed.toString());
-      updateFreeVersesCounter();
-      loadStrategicAds();
-      alert("🎉 +1 promessa ganha! Obrigado por assistir.");
-    }
-
-    function addBonusFromShare() {
-      if (!currentPromise) return;
-      
-      const viralText = `🙌 *Deus falou comigo através desta promessa!*\n\n✨ "${currentPromise.texto}"\n${currentPromise.versiculo ? `— ${currentPromise.versiculo}\n` : ''}\n*Acesse e veja o que Deus quer falar com você também:* https://caixadapromessa.com.br`;
-      window.open(`https://wa.me/?text=${encodeURIComponent(viralText)}`, '_blank');
-      
-      // Dar bônus após compartilhar
-      setTimeout(() => {
-        dailyVersesUsed = Math.max(0, dailyVersesUsed - 1);
-        localStorage.setItem('dailyVersesUsed', dailyVersesUsed.toString());
-        updateFreeVersesCounter();
-        loadStrategicAds();
-      }, 1000);
-    }
-
     function openBox() {
       if (opening || !promises[selectedCategory]?.length) return;
 
-      // Verificar limite APENAS se não tiver trial nem acesso vitalício
-      if (dailyVersesUsed >= DAILY_LIMIT && !hasLifetimeAccess && !trialActive) {
+      // Verificar limite
+      if (freeVersesCount >= MAX_FREE_VERSES && !hasLifetimeAccess) {
         elements.openBtn.disabled = true;
         elements.monetizationMessage.style.display = 'block';
         return;
@@ -974,12 +836,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       opening = true;
       elements.openBtn.disabled = true;
       
-      // Incrementar contador apenas se não tiver acesso vitalício NEM trial
-      if (!hasLifetimeAccess && !trialActive) {
-        dailyVersesUsed++;
-        localStorage.setItem('dailyVersesUsed', dailyVersesUsed.toString());
+      // Incrementar contador apenas se não tiver acesso vitalício
+      if (!hasLifetimeAccess) {
+        freeVersesCount++;
+        localStorage.setItem('freeVersesCount', freeVersesCount.toString());
         updateFreeVersesCounter();
-        loadStrategicAds();
       }
 
       // Selecionar promessa aleatória
@@ -1022,10 +883,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       
       setTimeout(() => {
         opening = false;
-        if (hasLifetimeAccess || trialActive || dailyVersesUsed < DAILY_LIMIT) {
+        if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
           elements.openBtn.disabled = false;
-        } else {
+        } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
           elements.monetizationMessage.style.display = 'block';
+        } else if (hasLifetimeAccess) {
+          elements.openBtn.disabled = false;
         }
       }, 1000);
     }
@@ -1041,10 +904,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       showResult();
       opening = false;
       
-      if (hasLifetimeAccess || trialActive || dailyVersesUsed < DAILY_LIMIT) {
+      if (!hasLifetimeAccess && freeVersesCount < MAX_FREE_VERSES) {
         elements.openBtn.disabled = false;
-      } else {
+      } else if (!hasLifetimeAccess && freeVersesCount >= MAX_FREE_VERSES) {
         elements.monetizationMessage.style.display = 'block';
+      } else if (hasLifetimeAccess) {
+        elements.openBtn.disabled = false;
       }
     }
 
@@ -1084,7 +949,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
     // INICIAR CARREGAMENTO
     loadPromises();
-    loadStrategicAds();
   });
 
   // Event listeners globais
