@@ -38,6 +38,10 @@
 ">
 <meta name="theme-color" content="#7dd3fc">
 
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
+     crossorigin="anonymous"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -328,8 +332,8 @@
     font-size: 1rem;
   }
 
-  /* Botão de anúncio rewarded */
-  #watchAdBtn {
+  /* Botão de ganhar bônus */
+  .bonus-btn {
     background: linear-gradient(135deg, #8B5CF6, #7C3AED);
     color: white;
     padding: 12px 20px;
@@ -377,6 +381,19 @@
       animation: blink 1s infinite;
       margin: 0 4px;
     }
+
+  /* Anúncio do AdSense */
+  .adsense-ad {
+    margin: 15px 0;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 </style>
 
@@ -428,11 +445,11 @@
     }
   });
 
-  // 5️⃣ Evento - Assistiu anúncio rewarded
+  // 5️⃣ Evento - Ganhou bônus
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.id === "watchAdBtn") {
-      fbq('track', 'ViewContent');
-      console.log("📺 Evento Pixel: ViewContent (Rewarded Ad) disparado");
+    if (e.target && e.target.classList.contains('bonus-btn')) {
+      fbq('track', 'CompleteRegistration');
+      console.log("🎁 Evento Pixel: CompleteRegistration (Bonus) disparado");
     }
   });
 </script>
@@ -488,14 +505,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   });
 
-  // 4️⃣ Anúncio Rewarded
+  // 4️⃣ Ganhou bônus
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.id === "watchAdBtn") {
+    if (e.target && e.target.classList.contains('bonus-btn')) {
       ttq.track('ViewContent', {
         contents: [],
         content_type: 'product'
       });
-      console.log("📺 Evento TikTok: ViewContent (Rewarded Ad) disparado");
+      console.log("🎁 Evento TikTok: ViewContent (Bonus) disparado");
     }
   });
 
@@ -551,15 +568,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   });
 
-  // 4️⃣ Evento - Anúncio Rewarded → "engagement"
+  // 4️⃣ Evento - Ganhou bônus → "engagement"
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.id === "watchAdBtn") {
+    if (e.target && e.target.classList.contains('bonus-btn')) {
       gtag('event', 'conversion', {
         'send_to': 'AW-11222711870/engagement',
         'value': 0.5,
         'currency': 'BRL'
       });
-      console.log("📺 Evento Google: engagement (Rewarded Ad) disparado");
+      console.log("🎁 Evento Google: engagement (Bonus) disparado");
     }
   });
 
@@ -573,19 +590,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     console.log("🌐 Evento Google: Visualização de página disparado");
   });
 </script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11222711870"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-11222711870');
-</script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
-     crossorigin="anonymous"></script>
 
 </head>
 
@@ -687,6 +691,21 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div class="loading-message" id="loadingMessage">Carregando promessas...</div>
   </div>
 
+  <!-- ANÚNCIO DO ADSENSE -->
+  <div class="adsense-ad">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
+     crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6250212527742966"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
   <div class="video-section">
     <div class="video-container">
       <video class="box-video" id="boxVideo" preload="metadata" playsinline muted>
@@ -702,31 +721,46 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <!-- Mensagem de Upsell Não-Invasivo -->
     <div id="upsellMessage" class="upsell-message" style="display:none;">
       <p>✨ Restam <span id="remainingToday">2</span> promessas hoje! Acesso vitalício por R$29,00</p>
-      <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
+      <a href="https://wa.me/5531986720591?text=Olá! Quero o ACESSO VITALÍCIO da Caixa da Promessa por R$29,00 e receber todas as 8.000+ promessas!" 
          target="_blank" 
-         style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
-        <span class="arrow">✨</span>
-        Quero acesso vitalício!
-        <span class="arrow">✨</span>
+         style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin: 10px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
+        💬 COMPRAR AGORA NO WHATSAPP
       </a>
-      <button id="watchAdBtn">📺 Assistir anúncio por +1 promessa</button>
+      <button class="bonus-btn" onclick="showBonusOptions()">
+        🎁 Ganhar +1 Promessa Hoje
+      </button>
     </div>
     
     <!-- Mensagem de limite atingido -->
     <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
-      <p>🎯 Você atingiu o limite de 5 promessas gratuitas por hoje. Volte amanhã!</p>
-      <div style="background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 12px; margin: 15px 0;">
-        <p style="color: #fbbf24; margin-bottom: 10px;">💫 <strong>Acesso Vitalício Ilimitado</strong></p>
-        <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
+      <p>🎯 Você atingiu o limite de 5 promessas gratuitas por hoje!</p>
+      
+      <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(34, 197, 94, 0.2)); padding: 20px; border-radius: 15px; margin: 20px 0; border: 2px solid rgba(251, 191, 36, 0.3);">
+        <p style="color: #fbbf24; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px;">
+          💫 ACESSO VITALÍCIO - R$29,00
+        </p>
+        <p style="color: #86efac; margin-bottom: 15px;">
+          ✅ +8.000 promessas ilimitadas<br>
+          ✅ Todas as categorias liberadas<br>
+          ✅ Sem limites diários<br>
+          ✅ Atualizações gratuitas
+        </p>
+        
+        <a href="https://wa.me/5531986720591?text=Olá! Quero o ACESSO VITALÍCIO da Caixa da Promessa por R$29,00 e receber todas as 8.000+ promessas!" 
            target="_blank" 
-           style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
-          <span class="arrow">✨</span>
-          Adquirir Acesso Vitalício - R$29,00
-          <span class="arrow">✨</span>
+           style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px 24px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin: 15px 0; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);">
+          💬 COMPRAR AGORA NO WHATSAPP
         </a>
+        
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+          <button id="unlockAccessBtn" style="flex: 1; background: rgba(251, 191, 36, 0.2); color: #fbbf24; border: 2px solid #fbbf24; padding: 12px; border-radius: 10px; font-weight: bold;">
+            🔓 Já comprei - Liberar
+          </button>
+          <button class="bonus-btn" onclick="showBonusOptions()" style="flex: 1;">
+            🎁 Ganhar +1 Hoje
+          </button>
+        </div>
       </div>
-      <button id="unlockAccessBtn">Já adquiri - Liberar Acesso</button>
-      <button id="watchAdBtn2">📺 Assistir anúncio por +1 promessa</button>
     </div>
   </div>
 </div>
@@ -752,14 +786,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   // ======================
 
   // CONFIGURAÇÃO ATUAL - PÓS TRIAL
-  const MAX_FREE_VERSES = 5; // 5 promessas diárias após trial
+  const MAX_FREE_VERSES = 5; // 5 promessas diárias
   const DAILY_RESET = true;
 
   // Sistema de Fidelidade
   const userStats = {
     daysStreak: 0,
     totalShares: 0,
-    adsWatched: 0,
+    bonusActions: 0,
     lastLogin: null,
     bonusVerses: 0
   };
@@ -807,9 +841,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       monetizationMessage: document.getElementById('monetizationMessage'),
       upsellMessage: document.getElementById('upsellMessage'),
       freeVersesCounter: document.getElementById('freeVersesCounter'),
-      unlockAccessBtn: document.getElementById('unlockAccessBtn'),
-      watchAdBtn: document.getElementById('watchAdBtn'),
-      watchAdBtn2: document.getElementById('watchAdBtn2')
+      unlockAccessBtn: document.getElementById('unlockAccessBtn')
     };
 
     // Inicializar sistema de uso diário
@@ -827,8 +859,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     elements.closeResult.addEventListener('click', closeResult);
     elements.shareWhatsApp.addEventListener('click', shareOnWhatsApp);
     elements.unlockAccessBtn.addEventListener('click', unlockAccess);
-    elements.watchAdBtn.addEventListener('click', watchRewardedAd);
-    elements.watchAdBtn2.addEventListener('click', watchRewardedAd);
 
     // Verificar se o usuário já tem acesso vitalício
     if (hasLifetimeAccess()) {
@@ -962,7 +992,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       openBtn.disabled = true;
       openBtn.textContent = 'Limite Atingido Hoje';
     } else if (usedToday >= 2) {
-      // Mostrar upsell após 2 usos (mais agressivo)
+      // Mostrar upsell após 2 usos
       upsellMessage.style.display = 'block';
       monetizationMessage.style.display = 'none';
       openBtn.disabled = false;
@@ -1023,6 +1053,63 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     saveUserStats();
     updateFreeVersesCounter();
     updateInterfaceBasedOnUsage();
+    showBonusMessage("🎁 +1 promessa bônus adicionada!");
+  }
+
+  // ======================
+  // SISTEMA DE BÔNUS
+  // ======================
+
+  function showBonusOptions() {
+    const bonusHTML = `
+      <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;">
+        <div style="background:linear-gradient(135deg, #1a1f4d, #0a0e27); padding:30px; border-radius:20px; text-align:center; color:white; max-width:400px; width:100%; border: 2px solid rgba(251, 191, 36, 0.3);">
+          <h3 style="color:#fbbf24; margin-bottom:20px;">🎁 Ganhe +1 Promessa Hoje!</h3>
+          
+          <div style="background:rgba(251, 191, 36, 0.1); padding:15px; border-radius:10px; margin:15px 0;">
+            <p style="margin-bottom:10px;">📲 <strong>Indique para 1 amigo</strong></p>
+            <button onclick="shareToFriend()" style="background:#fbbf24; color:#0a0e27; border:none; padding:12px 20px; border-radius:8px; width:100%; font-weight:bold; margin-bottom:10px;">
+              Compartilhar App
+            </button>
+          </div>
+          
+          <div style="background:rgba(34, 197, 94, 0.1); padding:15px; border-radius:10px; margin:15px 0;">
+            <p style="margin-bottom:10px;">⭐ <strong>Avalie nosso app</strong></p>
+            <button onclick="rateApp()" style="background:#22c55e; color:white; border:none; padding:12px 20px; border-radius:8px; width:100%; font-weight:bold;">
+              Fazer Avaliação
+            </button>
+          </div>
+          
+          <button onclick="closeBonus()" style="background:transparent; border:1px solid #fbbf24; color:#fbbf24; padding:12px 20px; border-radius:8px; width:100%; margin-top:15px;">
+            Fechar
+          </button>
+        </div>
+      </div>
+    `;
+    
+    const bonusDiv = document.createElement('div');
+    bonusDiv.innerHTML = bonusHTML;
+    bonusDiv.id = 'bonusModal';
+    document.body.appendChild(bonusDiv);
+  }
+
+  function shareToFriend() {
+    const shareText = `✨ Descubra as promessas de Deus para sua vida! \n\nCaixa da Promessa - 5 promessas divinas gratuitas por dia!\n\nhttps://caixadapromessa.com.br`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
+    addBonusVerse();
+    closeBonus();
+  }
+
+  function rateApp() {
+    // Simular avaliação
+    addBonusVerse();
+    closeBonus();
+    alert('⭐ Obrigado pela avaliação! +1 promessa adicionada.');
+  }
+
+  function closeBonus() {
+    const modal = document.getElementById('bonusModal');
+    if (modal) modal.remove();
   }
 
   // ======================
@@ -1192,28 +1279,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     document.getElementById('upsellMessage').style.display = 'none';
     document.getElementById('openBtn').disabled = false;
     document.getElementById('openBtn').textContent = 'Abrir a Caixa (Ilimitado)';
-  }
-
-  function watchRewardedAd() {
-    // Simular anúncio rewarded
-    showAdConfirmation();
-    
-    // Registrar visualização
-    userStats.adsWatched++;
-    saveUserStats();
-    
-    // Recompensa por assistir anúncio
-    addBonusVerse();
-    
-    // Disparar evento de analytics
-    gtag('event', 'earn_virtual_currency', {
-      virtual_currency_name: 'bonus_verse',
-      value: 1
-    });
-  }
-
-  function showAdConfirmation() {
-    showBonusMessage("🎬 Obrigado por assistir o anúncio! +1 promessa bônus adicionada!");
   }
 
   function showLimitReachedMessage() {
