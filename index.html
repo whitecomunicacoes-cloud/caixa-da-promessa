@@ -38,10 +38,6 @@
 ">
 <meta name="theme-color" content="#7dd3fc">
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
-     crossorigin="anonymous"></script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -154,6 +150,45 @@
     text-align: center;
     margin-top: 0.75rem; 
     font-weight: 500;
+  }
+
+  .benefits-section {
+    text-align: center; 
+    padding: 12px 15px; 
+    background: rgba(123, 211, 252, 0.1); 
+    border-radius: 15px; 
+    margin: 10px; 
+    border: 1px solid rgba(123, 211, 252, 0.3);
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 10px rgba(123, 211, 252, 0.3); }
+    to { box-shadow: 0 0 20px rgba(123, 211, 252, 0.5); }
+  }
+
+  .benefits-title {
+    color: #7dd3fc; 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    margin-bottom: 8px;
+  }
+
+  .benefits-grid {
+    display: flex; 
+    justify-content: space-around; 
+    color: rgba(220, 210, 255, 0.9); 
+    font-size: 0.8rem;
+  }
+
+  .benefit-item {
+    text-align: center;
+    flex: 1;
+  }
+
+  .benefit-emoji {
+    font-size: 1.2rem; 
+    margin-bottom: 4px;
   }
 
   .video-section {
@@ -368,6 +403,9 @@
     .header p { font-size: 0.9rem; }
     .category-label { font-size: 1rem; }
     .category-select { padding: 0.8rem; font-size: 1rem; background-position: right 0.8rem center; }
+    .benefits-section { padding: 8px 12px; }
+    .benefits-title { font-size: 0.8rem; }
+    .benefits-grid { font-size: 0.75rem; }
     .video-container { max-width: 240px; }
     #openBtn { font-size: 1.2rem; padding: 1rem; }
   }
@@ -381,19 +419,6 @@
       animation: blink 1s infinite;
       margin: 0 4px;
     }
-
-  /* Anúncio do AdSense */
-  .adsense-ad {
-    margin: 15px 0;
-    text-align: center;
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-    padding: 10px;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
 </style>
 
@@ -691,19 +716,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div class="loading-message" id="loadingMessage">Carregando promessas...</div>
   </div>
 
-  <!-- ANÚNCIO DO ADSENSE -->
-  <div class="adsense-ad">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
-     crossorigin="anonymous"></script>
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6250212527742966"
-         data-ad-slot="1234567890"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+  <!-- SEÇÃO DE BENEFÍCIOS (SUBSTITUI O ANÚNCIO) -->
+  <div class="benefits-section">
+    <div class="benefits-title">⭐ BENEFÍCIOS EXCLUSIVOS</div>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-emoji">📖</div>
+        <div>8.000+ Promessas</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-emoji">✨</div>
+        <div>5 Diárias Grátis</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-emoji">💫</div>
+        <div>Acesso Vitalício</div>
+      </div>
+    </div>
   </div>
 
   <div class="video-section">
