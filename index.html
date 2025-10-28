@@ -663,14 +663,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="buttons-section">
     <button id="openBtn" disabled>Abrir a Caixa</button>
     <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
-      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, entre em contato para adquirir o acesso vitalício por R$29,00.</p>
-      <a href="https://wa.me/5531986720591?text=Olá! Gostaria de adquirir o acesso vitalício à Caixa da Promessa por R$29,00." 
-   target="_blank" 
-   style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
-  <span class="arrow">✨</span>
-  Clique aqui para adquirir!
-  <span class="arrow">✨</span>
-</a>
+      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, adquira o acesso vitalício por R$29,00.</p>
+<a href="checkout_promessas.html" 
+	   style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
+	  <span class="arrow">✨</span>
+	  Clique aqui para adquirir seu Acesso Vitalício!
+	  <span class="arrow">✨</span>
+	</a>
       <button id="unlockAccessBtn">Já adquiri - Liberar Acesso</button>
     </div>
   </div>
@@ -753,18 +752,40 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
     const MAX_FREE_VERSES = 20;
 
-    let selectedCategory = 'spiritual';
-    let currentPromise = null;
-
-    const categories = {
+	    let selectedCategory = 'spiritual';
+	    let currentPromise = null;
+	
+	    const categories = {
       spiritual: { name: 'Espiritual', emoji: '🙏', file: 'promessas_espiritual.json' },
       family: { name: 'Família', emoji: '👨‍👩‍👧', file: 'promessas_familia.json' },
       health: { name: 'Saúde', emoji: '💖', file: 'promessas_saude.json' },
       business: { name: 'Negócios', emoji: '💼', file: 'promessas_negocios.json' },
-      money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
-    };
-
-    // Atualizar contador inicial
+	      money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
+	    };
+	
+	    // LÓGICA DE EXIBIÇÃO DO ADSENSE
+	    const adSlot = document.getElementById('adsense-top-slot');
+	    if (hasLifetimeAccess) {
+	        // Se o usuário tem acesso vitalício, remove o placeholder do anúncio
+	        if (adSlot) adSlot.remove();
+	    } else {
+	        // Se o usuário é gratuito, injeta o código de anúncio e faz o push
+	        if (adSlot) {
+	            adSlot.innerHTML = `
+	              <!-- Caixa Promessa res disp -->
+	              <ins class="adsbygoogle"
+	                   style="display:block"
+	                   data-ad-client="ca-pub-6250212527742966"
+	                   data-ad-slot="6427286510"
+	                   data-ad-format="auto"
+	                   data-full-width-responsive="true"></ins>
+	            `;
+	            // Faz o push para o AdSense carregar o anúncio
+	            (window.adsbygoogle = window.adsbygoogle || []).push({});
+	        }
+	    }
+	
+	    // Atualizar contador inicial
     updateFreeVersesCounter();
 
     function updateFreeVersesCounter() {
