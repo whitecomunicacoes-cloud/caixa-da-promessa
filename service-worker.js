@@ -11,7 +11,7 @@ const urlsToCache = [
   '/promessas_familia.json',
   '/promessas_saude.json',
   '/promessas_negocios.json',
-  '/promessas_dinheiro.json'
+  '/promessas_dinheiro.json', // Faltava uma vírgula aqui
   '/service-worker.js'
 ];
 
@@ -90,4 +90,71 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+// ===================================================
+// ✨ NOVOS EVENTOS PARA NOTIFICAÇÕES PUSH
+// ===================================================
+
+/**
+ * Evento 'push'
+ * Chamado quando o servidor envia uma notificação push.
+ * O 'event.data.json()' é o payload enviado pelo seu servidor.
+ */
+self.addEventListener('push', (event) => {
+  console.log('🔔 Push Recebido!');
+  
+  let data = { title: 'Sua Promessa Diária', body: 'Deus tem uma nova palavra para você!', icon: 'icon-192x192.png' };
+  
+  try {
+    // Tenta ler o JSON enviado pelo servidor
+    const serverData = event.data.json();
+    data = { ...data, ...serverData };
+  } catch (e) {
+    console.warn('Não foi possível ler o payload do push, usando dados padrão.');
+  }
+
+  const options = {
+    body: data.body,
+    icon: data.icon,
+    badge: 'icon-192x192.png', // Ícone para Android
+    vibrate: [200, 100, 200],
+    data: {
+      url: self.location.origin // URL para abrir ao clicar
+    }
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+/**
+ * Evento 'notificationclick'
+ * Chamado quando o usuário clica na notificação.
+ */
+self.addEventListener('notificationclick', (event) => {
+  console.log('🔔 Notificação clicada!');
+  
+  event.notification.close(); // Fecha a notificação
+
+  const urlToOpen = event.notification.data.url || '/';
+
+  event.waitUntil(
+    clients.matchAll({
+      type: 'window',
+      includeUncontrolled: true
+    }).then((clientList) => {
+      // Se o app já estiver aberto, foca na janela existente
+      for (const client of clientList) {
+        if (client.url === urlToOpen && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      // Se não estiver aberto, abre uma nova janela
+      if (clients.openWindow) {
+        return clients.openWindow(urlToOpen);
+      }
+    })
+  );
 });
