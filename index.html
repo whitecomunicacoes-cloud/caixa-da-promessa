@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caixa da Promessa - Promessas Divinas</title>
+<title>Promessas de Deus para Sua Vida | Caixa da Promessa</title>
+<meta name="description" content="Receba diariamente promessas divinas de saúde, finanças e família. Seu devocional digital com mais de 8.000 versículos. Acesse agora!">
 <link rel="manifest" href="pwa_manifest.json">
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self' https://caixadapromessa.com.br;
@@ -649,9 +650,22 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <option value="money">💰 Dinheiro</option>
     </select>
     <div class="loading-message" id="loadingMessage">Carregando promessas...</div>
-  </div>
+</div>
 
-  <div class="video-section">
+	  <div id="adsense-top-slot" style="margin: 15px auto; text-align: center;">
+	    <!-- Caixa Promessa res disp -->
+	    <ins class="adsbygoogle"
+	         style="display:block"
+	         data-ad-client="ca-pub-6250212527742966"
+	         data-ad-slot="6427286510"
+	         data-ad-format="auto"
+	         data-full-width-responsive="true"></ins>
+	    <script>
+	         (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+	  </div>
+
+	  <div class="video-section">
     <div class="video-container">
       <video class="box-video" id="boxVideo" preload="metadata" playsinline muted>
         <source src="caixa_abrindo.mp4" type="video/mp4">
@@ -750,6 +764,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     let opening = false;
     let freeVersesCount = parseInt(localStorage.getItem('freeVersesCount') || '0');
     let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
+
+	    // LÓGICA DE REMOÇÃO DE ADSENSE PARA USUÁRIOS VITALÍCIOS
+	    if (hasLifetimeAccess) {
+	        const adSlot = document.getElementById('adsense-top-slot');
+	        if (adSlot) adSlot.remove();
+	    }
     const MAX_FREE_VERSES = 20;
 
 	    let selectedCategory = 'spiritual';
