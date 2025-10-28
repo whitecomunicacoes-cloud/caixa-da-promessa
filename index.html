@@ -787,11 +787,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
 <script>
   // ======================
-  // SISTEMA HÍBRIDO INTELIGENTE - PÓS-TRIAL
+  // SISTEMA HÍBRIDO INTELIGENTE - CORRIGIDO
   // ======================
 
-  // CONFIGURAÇÃO ATUAL - PÓS TRIAL
-  const MAX_FREE_VERSES = 5; // 5 promessas diárias após trial
+  // CONFIGURAÇÃO ATUAL
+  const MAX_FREE_VERSES = 5;
   const DAILY_RESET = true;
 
   // Sistema de Fidelidade
@@ -834,68 +834,102 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   }
 
-  // CARREGAR PROMESSAS DOS ARQUIVOS JSON
+  // ======================
+  // CARREGAR PROMESSAS DOS ARQUIVOS JSON - CORRIGIDO
+  // ======================
+
   async function loadPromisesFromJSON() {
     try {
       const categories = ['spiritual', 'family', 'health', 'business', 'money'];
+      let allLoaded = true;
       
       for (const category of categories) {
-        const response = await fetch(`promises/${category}.json`);
-        if (response.ok) {
-          promisesDatabase[category] = await response.json();
-          console.log(`✅ ${category} promessas carregadas:`, promisesDatabase[category].length);
-        } else {
-          console.warn(`⚠️ Arquivo ${category}.json não encontrado, usando fallback`);
-          // Fallback para caso o arquivo não exista
+        try {
+          // Tenta carregar do caminho correto
+          const response = await fetch(`promessas_${category}.json`);
+          if (response.ok) {
+            const data = await response.json();
+            // Converter estrutura dos JSONs para o formato esperado
+            promisesDatabase[category] = data.map(item => ({
+              text: item.texto || item.text,
+              verse: item.versiculo || item.verse
+            }));
+            console.log(`✅ ${category} promessas carregadas:`, promisesDatabase[category].length);
+          } else {
+            console.warn(`⚠️ Arquivo promessas_${category}.json não encontrado`);
+            allLoaded = false;
+            // Carrega fallback para esta categoria
+            promisesDatabase[category] = getFallbackPromises(category);
+          }
+        } catch (error) {
+          console.warn(`⚠️ Erro ao carregar promessas_${category}.json:`, error);
+          allLoaded = false;
+          // Carrega fallback para esta categoria
           promisesDatabase[category] = getFallbackPromises(category);
         }
       }
       
-      document.getElementById('loadingMessage').textContent = 'Promessas carregadas!';
+      if (allLoaded) {
+        document.getElementById('loadingMessage').textContent = 'Todas as promessas carregadas!';
+      } else {
+        document.getElementById('loadingMessage').textContent = 'Promessas carregadas (algumas em modo offline)';
+      }
+      
       document.getElementById('openBtn').disabled = false;
+      console.log("📊 DATABASE FINAL CARREGADA:", promisesDatabase);
       
     } catch (error) {
-      console.error('❌ Erro ao carregar promessas:', error);
+      console.error('❌ Erro geral ao carregar promessas:', error);
       document.getElementById('loadingMessage').textContent = 'Erro ao carregar. Usando modo offline.';
       document.getElementById('openBtn').disabled = false;
       
-      // Carregar fallback em caso de erro
+      // Carregar fallback em caso de erro geral
       loadFallbackPromises();
     }
   }
 
-  // PROMESSAS FALLBACK (para caso os JSON não carreguem)
+  // PROMESSAS FALLBACK (para caso os JSON não carreguem) - CORRIGIDO
   function getFallbackPromises(category) {
     const fallbackPromises = {
       spiritual: [
         { text: "Deus te dará força para vencer todos os desafios", verse: "Filipenses 4:13" },
         { text: "A paz de Deus guardará seu coração e sua mente", verse: "Filipenses 4:7" },
         { text: "O Senhor é o seu pastor, nada lhe faltará", verse: "Salmos 23:1" },
-        { text: "Deus fará novas todas as coisas em sua vida", verse: "Apocalipse 21:5" }
+        { text: "Deus fará novas todas as coisas em sua vida", verse: "Apocalipse 21:5" },
+        { text: "Tudo posso naquele que me fortalece", verse: "Filipenses 4:13" },
+        { text: "Deus tem planos de prosperidade para você", verse: "Jeremias 29:11" }
       ],
       family: [
         { text: "Sua família será abençoada e protegida", verse: "Salmos 128:1-4" },
         { text: "Deus restaurará os relacionamentos da sua família", verse: "Malaquias 4:6" },
         { text: "Seus filhos serão como plantas de oliveira ao redor da mesa", verse: "Salmos 128:3" },
-        { text: "A benção do Senhor enriquece e não traz dores", verse: "Provérbios 10:22" }
+        { text: "A benção do Senhor enriquece e não traz dores", verse: "Provérbios 10:22" },
+        { text: "Eu e a minha família serviremos ao Senhor", verse: "Josué 24:15" },
+        { text: "Os filhos são herança do Senhor", verse: "Salmos 127:3" }
       ],
       health: [
         { text: "O Senhor te dará saúde e renovará suas forças", verse: "Isaías 40:31" },
         { text: "Deus te curará e restaurará sua saúde", verse: "Jeremias 30:17" },
         { text: "Ele é o Deus que sara todas as suas enfermidades", verse: "Salmos 103:3" },
-        { text: "Pela suas feridas nós fomos curados", verse: "Isaías 53:5" }
+        { text: "Pela suas feridas nós fomos curados", verse: "Isaías 53:5" },
+        { text: "O coração alegre é bom remédio", verse: "Provérbios 17:22" },
+        { text: "Jesus tomou sobre si nossas enfermidades", verse: "Mateus 8:17" }
       ],
       business: [
         { text: "Seus negócios prosperarão e você terá sucesso", verse: "Josué 1:8" },
         { text: "Deus abrirá portas de oportunidades para você", verse: "Apocalipse 3:8" },
         { text: "O Senhor te prosperará em tudo que colocar a mão", verse: "Deuteronômio 30:9" },
-        { text: "Seja forte e corajoso para empreender", verse: "Josué 1:9" }
+        { text: "Seja forte e corajoso para empreender", verse: "Josué 1:9" },
+        { text: "Consagre ao Senhor seus negócios", verse: "Provérbios 16:3" },
+        { text: "Deus lhe dá capacidade para produzir riqueza", verse: "Deuteronômio 8:18" }
       ],
       money: [
         { text: "Deus suprirá todas as suas necessidades financeiras", verse: "Filipenses 4:19" },
         { text: "Você será cabeça e não cauda, emprestará e não tomará emprestado", verse: "Deuteronômio 28:13" },
         { text: "Honre ao Senhor com seus bens e celeiros se encherão", verse: "Provérbios 3:9-10" },
-        { text: "Deus te dará sabedoria para administrar seus recursos", verse: "Tiago 1:5" }
+        { text: "Deus te dará sabedoria para administrar seus recursos", verse: "Tiago 1:5" },
+        { text: "A bênção do Senhor traz riqueza", verse: "Provérbios 10:22" },
+        { text: "Tragam os dízimos e Deus abrirá as janelas do céu", verse: "Malaquias 3:10" }
       ]
     };
     
@@ -907,66 +941,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     categories.forEach(category => {
       promisesDatabase[category] = getFallbackPromises(category);
     });
+    console.log("📚 Carregadas promessas fallback:", promisesDatabase);
   }
-
-  // Inicialização quando o DOM estiver carregado
-  document.addEventListener('DOMContentLoaded', function() {
-    setVhUnit();
-    createStars();
-    
-    // Configurar elementos
-    const elements = {
-      openBtn: document.getElementById('openBtn'),
-      result: document.getElementById('result'),
-      resultText: document.getElementById('resultText'),
-      resultVerse: document.getElementById('resultVerse'),
-      resultCounter: document.getElementById('resultCounter'),
-      categorySelect: document.getElementById('categorySelect'),
-      closeResult: document.getElementById('closeResult'),
-      shareWhatsApp: document.getElementById('shareWhatsApp'),
-      openMusic: document.getElementById('openMusic'),
-      boxVideo: document.getElementById('boxVideo'),
-      loadingMessage: document.getElementById('loadingMessage'),
-      monetizationMessage: document.getElementById('monetizationMessage'),
-      upsellMessage: document.getElementById('upsellMessage'),
-      freeVersesCounter: document.getElementById('freeVersesCounter'),
-      unlockAccessBtn: document.getElementById('unlockAccessBtn'),
-      watchAdBtn: document.getElementById('watchAdBtn'),
-      watchAdBtn2: document.getElementById('watchAdBtn2')
-    };
-
-    // Inicializar sistema de uso diário
-    initializeDailySystem();
-    updateFreeVersesCounter();
-
-    // Carregar dados do usuário
-    loadUserStats();
-
-    // Verificar se é o primeiro acesso do dia
-    checkDailyReset();
-
-    // Event Listeners
-    elements.openBtn.addEventListener('click', openBox);
-    elements.closeResult.addEventListener('click', closeResult);
-    elements.shareWhatsApp.addEventListener('click', shareOnWhatsApp);
-    elements.unlockAccessBtn.addEventListener('click', unlockAccess);
-    elements.watchAdBtn.addEventListener('click', watchRewardedAd);
-    elements.watchAdBtn2.addEventListener('click', watchRewardedAd);
-
-    // Verificar se o usuário já tem acesso vitalício
-    if (hasLifetimeAccess()) {
-      showLifetimeAccess();
-    }
-
-    // Carregar promessas dos arquivos JSON
-    loadPromisesFromJSON();
-
-    // Atualizar interface baseada no uso atual
-    updateInterfaceBasedOnUsage();
-
-    // Ajustar altura quando a janela for redimensionada
-    window.addEventListener('resize', setVhUnit);
-  });
 
   // ======================
   // SISTEMA DE USO DIÁRIO
@@ -978,7 +954,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         date: new Date().toDateString(),
         count: 0,
         bonusUsed: 0,
-        usedPromises: {} // Para evitar repetição
+        usedPromises: {}
       }));
     }
   }
@@ -1112,7 +1088,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       openBtn.disabled = true;
       openBtn.textContent = 'Limite Atingido Hoje';
     } else if (usedToday >= 2) {
-      // Mostrar upsell após 2 usos (mais agressivo)
+      // Mostrar upsell após 2 usos
       upsellMessage.style.display = 'block';
       monetizationMessage.style.display = 'none';
       openBtn.disabled = false;
@@ -1176,7 +1152,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   }
 
   // ======================
-  // FUNÇÕES PRINCIPAIS
+  // FUNÇÕES PRINCIPAIS - CORRIGIDAS
   // ======================
 
   function openBox() {
@@ -1212,6 +1188,67 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       elements.openMusic.pause();
       elements.openMusic.currentTime = 0;
     };
+  }
+
+  // ======================
+  // FUNÇÃO GET RANDOM PROMISE - CORRIGIDA
+  // ======================
+
+  function getRandomPromise(category) {
+    console.log(`🔍 Buscando promessa para categoria: ${category}`);
+    
+    const categoryPromises = promisesDatabase[category];
+    
+    if (!categoryPromises || categoryPromises.length === 0) {
+      console.error(`❌ Nenhuma promessa encontrada para categoria: ${category}`);
+      console.log("📊 Database atual:", promisesDatabase);
+      return {
+        text: "Deus tem uma promessa especial para você hoje",
+        verse: "Jeremias 29:11"
+      };
+    }
+
+    const usedPromises = getUsedPromisesToday();
+    const usedInCategory = usedPromises[category] || [];
+    
+    console.log(`📖 Promessas disponíveis em ${category}: ${categoryPromises.length}`);
+    console.log(`📝 Já usadas hoje: ${usedInCategory.length}`);
+
+    // Encontrar promessas não usadas hoje
+    const availablePromises = categoryPromises.filter((_, index) => !usedInCategory.includes(index));
+    
+    let selectedPromise;
+    let selectedIndex;
+
+    if (availablePromises.length > 0) {
+      // Usar uma promessa ainda não usada hoje
+      const randomIndex = Math.floor(Math.random() * availablePromises.length);
+      selectedPromise = availablePromises[randomIndex];
+      // Encontrar o índice original na lista completa
+      selectedIndex = categoryPromises.findIndex(p => 
+        p.text === selectedPromise.text && p.verse === selectedPromise.verse
+      );
+      console.log(`🎯 Selecionada promessa não usada: ${selectedIndex}`);
+    } else {
+      // Todas foram usadas, escolher qualquer uma
+      const randomIndex = Math.floor(Math.random() * categoryPromises.length);
+      selectedPromise = categoryPromises[randomIndex];
+      selectedIndex = randomIndex;
+      console.log(`🔄 Todas usadas, selecionando qualquer: ${selectedIndex}`);
+      
+      // Limpar promessas usadas para esta categoria (reiniciar ciclo)
+      const dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0,"usedPromises":{}}');
+      dailyUsage.usedPromises[category] = [];
+      localStorage.setItem('dailyUsage', JSON.stringify(dailyUsage));
+    }
+
+    // Marcar como usada
+    if (selectedIndex !== -1) {
+      markPromiseAsUsed(category, selectedIndex);
+    }
+
+    console.log("📜 Promessa selecionada:", selectedPromise);
+    return selectedPromise;
   }
 
   function showRandomPromise() {
@@ -1254,50 +1291,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     
     // Registrar evento de analytics
     trackPromiseOpened(category);
-  }
-
-  function getRandomPromise(category) {
-    const categoryPromises = promisesDatabase[category];
-    
-    if (!categoryPromises || categoryPromises.length === 0) {
-      console.error(`❌ Nenhuma promessa encontrada para categoria: ${category}`);
-      return null;
-    }
-
-    const usedPromises = getUsedPromisesToday();
-    const usedInCategory = usedPromises[category] || [];
-    
-    // Encontrar promessas não usadas hoje
-    const availablePromises = categoryPromises.filter((_, index) => !usedInCategory.includes(index));
-    
-    let selectedPromise;
-    let selectedIndex;
-
-    if (availablePromises.length > 0) {
-      // Usar uma promessa ainda não usada hoje
-      const randomIndex = Math.floor(Math.random() * availablePromises.length);
-      selectedPromise = availablePromises[randomIndex];
-      selectedIndex = categoryPromises.indexOf(selectedPromise);
-    } else {
-      // Todas foram usadas, reiniciar o ciclo
-      const randomIndex = Math.floor(Math.random() * categoryPromises.length);
-      selectedPromise = categoryPromises[randomIndex];
-      selectedIndex = randomIndex;
-      
-      // Limpar promessas usadas para esta categoria
-      const dailyUsage = JSON.parse(localStorage.getItem('dailyUsage') || '{"date":"","count":0,"bonusUsed":0,"usedPromises":{}}');
-      if (dailyUsage.usedPromises[category]) {
-        dailyUsage.usedPromises[category] = [];
-      }
-      localStorage.setItem('dailyUsage', JSON.stringify(dailyUsage));
-    }
-
-    // Marcar como usada
-    if (selectedIndex !== undefined) {
-      markPromiseAsUsed(category, selectedIndex);
-    }
-
-    return selectedPromise;
   }
 
   function closeResult() {
@@ -1432,6 +1425,68 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }]
     });
   }
+
+  // ======================
+  // INICIALIZAÇÃO
+  // ======================
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setVhUnit();
+    createStars();
+    
+    // Configurar elementos
+    const elements = {
+      openBtn: document.getElementById('openBtn'),
+      result: document.getElementById('result'),
+      resultText: document.getElementById('resultText'),
+      resultVerse: document.getElementById('resultVerse'),
+      resultCounter: document.getElementById('resultCounter'),
+      categorySelect: document.getElementById('categorySelect'),
+      closeResult: document.getElementById('closeResult'),
+      shareWhatsApp: document.getElementById('shareWhatsApp'),
+      openMusic: document.getElementById('openMusic'),
+      boxVideo: document.getElementById('boxVideo'),
+      loadingMessage: document.getElementById('loadingMessage'),
+      monetizationMessage: document.getElementById('monetizationMessage'),
+      upsellMessage: document.getElementById('upsellMessage'),
+      freeVersesCounter: document.getElementById('freeVersesCounter'),
+      unlockAccessBtn: document.getElementById('unlockAccessBtn'),
+      watchAdBtn: document.getElementById('watchAdBtn'),
+      watchAdBtn2: document.getElementById('watchAdBtn2')
+    };
+
+    // Inicializar sistema de uso diário
+    initializeDailySystem();
+    updateFreeVersesCounter();
+
+    // Carregar dados do usuário
+    loadUserStats();
+
+    // Verificar se é o primeiro acesso do dia
+    checkDailyReset();
+
+    // Event Listeners
+    elements.openBtn.addEventListener('click', openBox);
+    elements.closeResult.addEventListener('click', closeResult);
+    elements.shareWhatsApp.addEventListener('click', shareOnWhatsApp);
+    elements.unlockAccessBtn.addEventListener('click', unlockAccess);
+    elements.watchAdBtn.addEventListener('click', watchRewardedAd);
+    elements.watchAdBtn2.addEventListener('click', watchRewardedAd);
+
+    // Verificar se o usuário já tem acesso vitalício
+    if (hasLifetimeAccess()) {
+      showLifetimeAccess();
+    }
+
+    // Carregar promessas dos arquivos JSON
+    loadPromisesFromJSON();
+
+    // Atualizar interface baseada no uso atual
+    updateInterfaceBasedOnUsage();
+
+    // Ajustar altura quando a janela for redimensionada
+    window.addEventListener('resize', setVhUnit);
+  });
 
   // Prevenir gesto de zoom em double-tap
   document.addEventListener('touchstart', function(event) {
