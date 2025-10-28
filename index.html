@@ -37,6 +37,7 @@
   frame-src 'self' https://www.google.com;
 ">
 <meta name="theme-color" content="#7dd3fc">
+	<meta name="google-adsense-account" content="ca-pub-6250212527742966">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,26 +53,28 @@
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0a0e27 0%, #1a1f4d 50%, #0f1a3f 100%);
     display: flex; 
-    justify-content: center; 
+    flex-direction: column; 
+    justify-content: flex-start; 
     align-items: center;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh;
+    /* height: calc(var(--vh, 1vh) * 100); */
     padding: 10px;
     font-size: 18px;
   }
 
-  .container {
-    width: 100%; 
-    max-width: 480px; 
-    height: 100%;
-    max-height: 900px;
-    background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 77, 0.95) 50%, rgba(15, 26, 63, 0.95) 100%);
-    border-radius: 30px; 
-    display: flex; 
-    flex-direction: column;
-    box-shadow: 0 0 80px rgba(100, 150, 255, 0.4), inset 0 0 40px rgba(138, 43, 226, 0.2);
-    position: relative; 
-    overflow: hidden;
+.container {
+	    width: 100%; 
+	    max-width: 480px; 
+	    flex-grow: 1; /* Faz o container crescer para ocupar o espaço */
+	    background: linear-gradient(180deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 77, 0.95) 50%, rgba(15, 26, 63, 0.95) 100%);
+	    border-radius: 30px; 
+	    display: flex; 
+	    flex-direction: column;
+	    box-shadow: 0 0 80px rgba(100, 150, 255, 0.4), inset 0 0 40px rgba(138, 43, 226, 0.2);
+	    position: relative; 
+	    overflow-y: auto; /* Permite rolagem vertical se necessário */
+	    margin: 10px; /* Adiciona uma margem para não colar nas bordas */
+	  }
   }
 
   .stars-bg { position: absolute; width: 100%; height: 100%; pointer-events: none; }
@@ -210,12 +213,12 @@
   #openBtn:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* Estilos da tela de resultado */
-  #result { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
+#result { 
+	    position: fixed; 
+	    top: 0; 
+	    left: 0; 
+	    width: 100%; 
+	    min-height: 100%;
     background: rgba(0, 0, 0, 0.9); 
     display: flex; 
     align-items: center; 
@@ -346,9 +349,30 @@
       display: inline-block;
       animation: blink 1s infinite;
       margin: 0 4px;
-    }
+}
 
-</style>
+.footer {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px 10px;
+    text-align: center;
+    background: rgba(10, 14, 39, 0.8);
+    border-top: 1px solid rgba(138, 43, 226, 0.3);
+    color: rgba(220, 210, 255, 0.7);
+    font-size: 0.8rem;
+    z-index: 5;
+    margin-top: auto; /* Garante que o footer fique no final do conteúdo */
+  }
+  .footer a {
+    color: #7dd3fc;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s;
+  }
+  .footer a:hover {
+    color: #a78bfa;
+  }
+  </style>
 
 <!-- Meta Pixel Code -->
 <script>
@@ -526,7 +550,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
      crossorigin="anonymous"></script>
 
-</head>
+	
+	</head>
 
 <script>
 	  let deferredPrompt;
@@ -600,16 +625,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </script>
 
 <body>
-<audio id="openMusic" loop preload="auto">
-    <source src="harp_music.mp3" type="audio/mp3">
-    Seu navegador não suporta o elemento de áudio.
-</audio>
-
-<div class="stars-bg" id="starsBg"></div>
-
-<div class="container">
-  <div class="header">
-    <h1>✨ CAIXA DA PROMESSA ✨</h1>
+	<audio id="openMusic" loop preload="auto">
+	    <source src="harp_music.mp3" type="audio/mp3">
+	    Seu navegador não suporta o elemento de áudio.
+	</audio>
+	
+	<div class="stars-bg" id="starsBg"></div>
+	
+	<div class="container">
+	  <div class="header">
+	    <h1>✨ CAIXA DA PROMESSA ✨</h1>
     <p>Mais de 8.000 Promessas Para Sua Vida</p>
   </div>
 
@@ -650,8 +675,18 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     </div>
   </div>
 </div>
+	
+	<div class="footer">
+	  <p>&copy; 2024 Caixa da Promessa. Todos os direitos reservados.</p>
+	  <p>
+	    <a href="politica-privacidade.html">Política de Privacidade</a> |
+	    <a href="termos-uso.html">Termos de Uso</a> |
+	    <a href="sobre.html">Sobre</a> |
+	    <a href="contato.html">Contato</a>
+	  </p>
+	</div>
 
-<div id="result">
+	<div id="result">
   <div class="result-container">
     <div class="result-counter" id="resultCounter"></div>
     <div class="result-emoji">⭐</div>
@@ -968,5 +1003,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     });
   }
 </script>
+
 </body>
 </html>
