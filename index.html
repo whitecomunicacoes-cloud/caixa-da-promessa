@@ -652,16 +652,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
      crossorigin="anonymous"></script>
-	 
-	<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "c3dc8a4e-3b10-4833-b98a-04487edf98e7",
-    });
-  });
-</script> 
 
 	
 	</head>
@@ -1238,25 +1228,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       }
     });
 
-    // --- LÓGICA DE NOTIFICAÇÕES PUSH (COM ONESIGNAL) ---
-	elements.notifyBtn.addEventListener('click', (e) => {
-	e.preventDefault();
+    // --- LÓGICA DE NOTIFICAÇÕES PUSH ---
+    elements.notifyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      requestNotificationPermission();
+    });
 
-  // Verifica se o OneSignal está pronto
-  if (typeof OneSignal === 'undefined') {
-    alert('Erro: Serviço de notificação não carregou.');
-    return;
-  }
+    async function requestNotificationPermission() {
+      if (!('Notification' in window) || !('serviceWorker' in navigator)) {
+        alert('Seu navegador não suporta notificações.');
+        return;
+      }
 
-  console.log("Solicitando permissão via OneSignal...");
-
-  // Esta função do OneSignal pede permissão ao usuário
-  OneSignal.Slidedown.promptPush(); 
-
-  elements.notifyBtn.textContent = "🔔 Verifique a solicitação...";
-});
-
-          const permission = await Notification.requestPermission();
+      const permission = await Notification.requestPermission();
       
       if (permission === 'granted') {
         console.log('Permissão de notificação concedida.');
@@ -1296,7 +1280,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           alert('Houve um erro ao ativar as notificações.');
         }
         
-     // --- FIM DAS NOVAS FUNÇÕES ---
+      } else {
+        console.warn('Permissão de notificação negada.');
+        alert('Você bloqueou as notificações. Você pode reativá-las nas configurações do seu navegador.');
+      }
+    }
+
+    // --- FIM DAS NOVAS FUNÇÕES ---
     
     // INICIAR CARREGAMENTO
     loadPromises();
