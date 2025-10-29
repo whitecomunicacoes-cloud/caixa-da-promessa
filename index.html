@@ -6,13 +6,11 @@
 <title>Promessas de Deus para Sua Vida | Caixa da Promessa</title>
 <meta name="description" content="Receba diariamente promessas divinas de saúde, finanças e família. Seu devocional digital com mais de 8.000 versículos. Acesse agora!">
 <link rel="manifest" href="pwa_manifest.json">
-
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self' https://caixadapromessa.com.br;
   script-src 'self' 'unsafe-inline' 
     https://www.googletagmanager.com 
     https://googleads.g.doubleclick.net 
-    https://pagead2.googlesyndication.com 
     https://www.google-analytics.com 
     https://ssl.google-analytics.com
     https://www.google.com 
@@ -20,7 +18,6 @@
     https://analytics.tiktok.com 
     https://cdnjs.cloudflare.com;
   connect-src 'self' 
-    https://pagead2.googlesyndication.com
     https://www.google-analytics.com 
     https://ssl.google-analytics.com
     https://analytics.google.com 
@@ -109,24 +106,6 @@
     color: rgba(220, 210, 255, 1);
     font-size: 1rem;
     font-weight: 400; 
-  }
-  
-  /* NOVO: Link para remover anúncios */
-  .remove-ads-link {
-    color: #fbbf24;
-    font-size: 0.9rem;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 8px;
-    padding: 5px 10px;
-    border: 1px solid #fbbf24;
-    border-radius: 8px;
-    transition: all 0.3s;
-  }
-  .remove-ads-link:hover {
-    background: #fbbf24;
-    color: #0a0e27;
   }
 
   .category-section {
@@ -302,7 +281,7 @@
     font-style: italic; 
   }
   
-  /* BOTÕES ATUALIZADOS - SALVAR, COMPARTILHAR, FECHAR */
+  /* BOTÕES CORRIGIDOS - WHATSAPP PRIMEIRO */
   .result-actions { 
     display: flex; 
     flex-direction: column; 
@@ -310,27 +289,9 @@
     margin-top: 20px; 
   }
 
-  /* NOVO: Botão Salvar (Primeiro) */
-  .save-btn {
-    order: 1;
-    background: rgba(255, 255, 255, 0.3);
-    color: #0a0e27;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    padding: 14px;
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-  .save-btn.saved, .save-btn:disabled {
-    background: #f0abfc;
-    color: #3b0764;
-    border-color: #3b0764;
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
-
-  /* COMPARTILHAR - (Segundo) */
+  /* COMPARTILHAR - EM CIMA (Primeiro) */
   .share-btn {
-    order: 2;
+    order: 1;
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: white;
     border: none;
@@ -343,9 +304,9 @@
     gap: 8px;
   }
 
-  /* FECHAR - (Terceiro) */
+  /* FECHAR - EM BAIXO (Segundo) */
   #closeResult {
-    order: 3;
+    order: 2;
     background: rgba(10, 14, 39, 0.2);
     color: rgba(10, 14, 39, 0.95);
     border: 2px solid rgba(10, 14, 39, 0.3);
@@ -353,7 +314,7 @@
     font-weight: 700;
   }
 
-  .share-btn:hover, #closeResult:hover, .save-btn:not(:disabled):hover {
+  .share-btn:hover, #closeResult:hover {
     transform: translateY(-2px);
   }
 
@@ -412,72 +373,9 @@
   .footer a:hover {
     color: #a78bfa;
   }
-  
-  /* NOVO: Estilos do Modal de Favoritos */
-  .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; min-height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    z-index: 101; padding: 20px;
-  }
-  .modal-overlay.show { opacity: 1; pointer-events: all; }
-  .modal-content {
-    width: 90%; max-width: 400px; max-height: 80vh;
-    background: linear-gradient(135deg, #0f1a3f 0%, #1a1f4d 100%);
-    border: 2px solid #a78bfa;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 0 50px rgba(167, 139, 250, 0.5);
-    display: flex; flex-direction: column;
-  }
-  .modal-content h2 {
-    color: #f0abfc;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.4rem;
-  }
-  #favoritesList {
-    overflow-y: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  .favorite-item {
-    background: rgba(10, 14, 39, 0.9);
-    border: 1px solid rgba(138, 43, 226, 0.5);
-    padding: 15px;
-    border-radius: 12px;
-  }
-  .favorite-item p {
-    font-size: 1.1rem; color: #FFFFFF;
-    font-weight: 600;
-    white-space: pre-wrap; 
-    word-break: break-word; 
-  }
-  .favorite-item span {
-    font-size: 0.9rem; color: #c084fc;
-    font-style: italic;
-    display: block;
-    margin-top: 8px;
-  }
-  .favorite-item-empty {
-    color: #a78bfa; text-align: center; padding: 20px;
-  }
-  .modal-close-btn {
-    background: #fbbf24;
-    color: #0a0e27;
-    padding: 12px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-  }
   </style>
 
+<!-- Meta Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -511,9 +409,9 @@
 
   // 3️⃣ Evento - Clicou em "Clique aqui para adquirir"
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.closest('a[href*="checkout_promessas.html"]')) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
       fbq('track', 'Lead');
-      console.log("💬 Evento Pixel: Lead disparado (Checkout)");
+      console.log("💬 Evento Pixel: Lead disparado (WhatsApp)");
     }
   });
 
@@ -526,6 +424,9 @@
   });
 </script>
 
+<!-- End Meta Pixel Code -->
+
+<!-- TikTok Pixel Code Start -->
 <script>
 !function (w, d, t) {
   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
@@ -550,9 +451,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   });
 
-  // 2️⃣ Lead Checkout
+  // 2️⃣ Lead WhatsApp
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.closest('a[href*="checkout_promessas.html"]')) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
       ttq.track('Lead', {
         contents: [],
         content_type: 'product'
@@ -576,6 +477,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
 }(window, document, 'ttq');
 </script>
+<!-- TikTok Pixel Code End -->
+
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11222711870"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -599,15 +503,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
   });
 
-  // 2️⃣ Evento - Clique no Checkout → "Assinatura"
+  // 2️⃣ Evento - Clique no WhatsApp → "Assinatura"
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.closest('a[href*="checkout_promessas.html"]')) {
+    if (e.target && e.target.closest('a[href*="wa.me"]')) {
       gtag('event', 'conversion', {
         'send_to': 'AW-11222711870/Assinatura',
         'value': 29.00,
         'currency': 'BRL'
       });
-      console.log("💬 Evento Google: Assinatura (Checkout) disparado");
+      console.log("💬 Evento Google: Assinatura (WhatsApp) disparado");
     }
   });
 
@@ -634,6 +538,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   });
 </script>
 
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11222711870"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -643,17 +548,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   gtag('config', 'AW-11222711870');
 </script>
 
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6250212527742966",
-    enable_page_level_ads: true,
-    overlays: {bottom: true}
-  });
-</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6250212527742966"
      crossorigin="anonymous"></script>
-	
-	<meta name="google-site-verification" content="iYXKkzHFhA8av_VKAc7iivtDh_tFd938YwBO-U5IhMk" />
+	 
+	 <meta name="google-site-verification" content="iYXKkzHFhA8av_VKAc7iivtDh_tFd938YwBO-U5IhMk" />
 	
 	</head>
 
@@ -739,11 +637,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 	<div class="container">
 	  <div class="header">
 	    <h1>✨ CAIXA DA PROMESSA ✨</h1>
-      <p>Mais de 8.000 Promessas Para Sua Vida</p>
-      <a href="checkout_promessas.html" id="removeAdsLink" class="remove-ads-link">
-        ⭐ Remover Anúncios e Acessar VIP
-      </a>
-    </div>
+    <p>Mais de 8.000 Promessas Para Sua Vida</p>
+  </div>
 
   <div class="category-section">
     <div class="category-label">Escolha a área da promessa</div>
@@ -759,7 +654,17 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </div>
 
 	  <div id="adsense-top-slot" style="margin: 15px auto; text-align: center;">
-	    </div>
+	    <!-- Caixa Promessa res disp -->
+	    <ins class="adsbygoogle"
+	         style="display:block"
+	         data-ad-client="ca-pub-6250212527742966"
+	         data-ad-slot="6427286510"
+	         data-ad-format="auto"
+	         data-full-width-responsive="true"></ins>
+	    <script>
+	         (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+	  </div>
 
 	  <div class="video-section">
     <div class="video-container">
@@ -773,18 +678,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="buttons-section">
     <button id="openBtn" disabled>Abrir a Caixa</button>
     <div id="monetizationMessage" style="display:none; text-align:center; margin-top:15px; color:#FFFFFF; font-size:1.1rem; padding: 10px;">
-      <p>Você atingiu o limite gratuito. Adquira o <b>Acesso Vitalício (VIP)</b> por R$29,00 e receba:</p>
-      <ul style="text-align: left; list-style-type: '✅'; padding-left: 30px; margin: 10px 0; font-size: 1rem;">
-        <li style="padding-left: 8px;">Versículos ilimitados</li>
-        <li style="padding-left: 8px;">Remoção de 100% dos anúncios</li>
-        <li style="padding-left: 8px;">Acesso a futuras categorias VIP</li>
-      </ul>
-      <a href="checkout_promessas.html" 
-           style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
-        <span class="arrow">✨</span>
-        Clique aqui para adquirir seu Acesso Vitalício!
-        <span class="arrow">✨</span>
-      </a>
+      <p>Você atingiu o limite de versículos gratuitos. Para continuar recebendo promessas divinas ilimitadas, adquira o acesso vitalício por R$29,00.</p>
+<a href="checkout_promessas.html" 
+	   style="color:#fbbf24; text-decoration:none; font-weight:bold; display:block; margin: 10px 0; font-size: 1.1rem;">
+	  <span class="arrow">✨</span>
+	  Clique aqui para adquirir seu Acesso Vitalício!
+	  <span class="arrow">✨</span>
+	</a>
       <button id="unlockAccessBtn">Já adquiri - Liberar Acesso</button>
     </div>
   </div>
@@ -798,10 +698,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 	    <a href="sobre.html">Sobre</a> |
 	    <a href="contato.html">Contato</a>
 	  </p>
-    <p style="margin-top: 10px;">
-      <a href="#" id="favoritesBtn">❤️ Minhas Promessas</a> |
-      <a href="#" id="notifyBtn">🔔 Ativar Promessa Diária</a>
-    </p>
 	</div>
 
 	<div id="result">
@@ -811,21 +707,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div id="resultText">Promessa Revelada</div>
     <div id="resultVerse" class="result-verse"></div>
     <div class="result-actions">
-      <button class="save-btn" id="savePromiseBtn">❤️ Salvar Promessa</button>
       <button class="share-btn" id="shareWhatsApp">
         <span>📲</span> Compartilhar no WhatsApp
       </button>
       <button id="closeResult">Fechar</button>
     </div>
-  </div>
-</div>
-
-<div id="favoritesModal" class="modal-overlay">
-  <div class="modal-content">
-    <h2>❤️ Minhas Promessas Salvas</h2>
-    <div id="favoritesList">
-      </div>
-    <button id="closeFavoritesModal" class="modal-close-btn">Fechar</button>
   </div>
 </div>
 
@@ -857,7 +743,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     setVhUnit();
     createStars();
     
-    // Configurar elementos (com novos elementos)
+    // Configurar elementos
     const elements = {
       openBtn: document.getElementById('openBtn'),
       result: document.getElementById('result'),
@@ -872,58 +758,55 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       loadingMessage: document.getElementById('loadingMessage'),
       monetizationMessage: document.getElementById('monetizationMessage'),
       freeVersesCounter: document.getElementById('freeVersesCounter'),
-      unlockAccessBtn: document.getElementById('unlockAccessBtn'),
-      removeAdsLink: document.getElementById('removeAdsLink'), // Novo
-      adSlot: document.getElementById('adsense-top-slot'),      // Novo
-      // Novos elementos de Favoritos
-      savePromiseBtn: document.getElementById('savePromiseBtn'),
-      favoritesBtn: document.getElementById('favoritesBtn'),
-      favoritesModal: document.getElementById('favoritesModal'),
-      favoritesList: document.getElementById('favoritesList'),
-      closeFavoritesModal: document.getElementById('closeFavoritesModal'),
-      // Novo elemento de Notificação
-      notifyBtn: document.getElementById('notifyBtn')
+      unlockAccessBtn: document.getElementById('unlockAccessBtn')
     };
 
     let promises = {};
     let opening = false;
     let freeVersesCount = parseInt(localStorage.getItem('freeVersesCount') || '0');
     let hasLifetimeAccess = localStorage.getItem('hasLifetimeAccess') === 'true';
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]'); // Novo
-    let currentPromise = null;
-    
+
+	    // LÓGICA DE REMOÇÃO DE ADSENSE PARA USUÁRIOS VITALÍCIOS
+	    if (hasLifetimeAccess) {
+	        const adSlot = document.getElementById('adsense-top-slot');
+	        if (adSlot) adSlot.remove();
+	    }
     const MAX_FREE_VERSES = 20;
 
-	  const categories = {
+	    let selectedCategory = 'spiritual';
+	    let currentPromise = null;
+	
+	    const categories = {
       spiritual: { name: 'Espiritual', emoji: '🙏', file: 'promessas_espiritual.json' },
       family: { name: 'Família', emoji: '👨‍👩‍👧', file: 'promessas_familia.json' },
       health: { name: 'Saúde', emoji: '💖', file: 'promessas_saude.json' },
       business: { name: 'Negócios', emoji: '💼', file: 'promessas_negocios.json' },
-	    money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
-	  };
+	      money: { name: 'Dinheiro', emoji: '💰', file: 'promessas_dinheiro.json' }
+	    };
 	
-	  // LÓGICA DE EXIBIÇÃO DO ADSENSE (BANNER E LINK VIP)
-	  if (hasLifetimeAccess) {
-	      // Se o usuário tem acesso vitalício, remove o placeholder do anúncio e o link de upgrade
-	      if (elements.adSlot) elements.adSlot.remove();
-        if (elements.removeAdsLink) elements.removeAdsLink.remove();
-	  } else {
-	      // Se o usuário é gratuito, injeta o código de anúncio banner e faz o push
-	      if (elements.adSlot) {
-	          elements.adSlot.innerHTML = `
-	            <ins class="adsbygoogle"
-	                 style="display:block"
-	                 data-ad-client="ca-pub-6250212527742966"
-	                 data-ad-slot="6427286510"
-	                 data-ad-format="auto"
-	                 data-full-width-responsive="true"></ins>
-	          `;
-	          // Faz o push para o AdSense carregar o anúncio banner
-	          (window.adsbygoogle = window.adsbygoogle || []).push({});
-	      }
-	  }
+	    // LÓGICA DE EXIBIÇÃO DO ADSENSE
+	    const adSlot = document.getElementById('adsense-top-slot');
+	    if (hasLifetimeAccess) {
+	        // Se o usuário tem acesso vitalício, remove o placeholder do anúncio
+	        if (adSlot) adSlot.remove();
+	    } else {
+	        // Se o usuário é gratuito, injeta o código de anúncio e faz o push
+	        if (adSlot) {
+	            adSlot.innerHTML = `
+	              <!-- Caixa Promessa res disp -->
+	              <ins class="adsbygoogle"
+	                   style="display:block"
+	                   data-ad-client="ca-pub-6250212527742966"
+	                   data-ad-slot="6427286510"
+	                   data-ad-format="auto"
+	                   data-full-width-responsive="true"></ins>
+	            `;
+	            // Faz o push para o AdSense carregar o anúncio
+	            (window.adsbygoogle = window.adsbygoogle || []).push({});
+	        }
+	    }
 	
-	  // Atualizar contador inicial
+	    // Atualizar contador inicial
     updateFreeVersesCounter();
 
     function updateFreeVersesCounter() {
@@ -986,27 +869,23 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       return defaults[category] || [{ texto: "Deus tem um plano maravilhoso para a sua vida.", versiculo: "Jeremias 29:11" }];
     }
 
-    // --- Event Listeners Principais ---
+    // Event Listeners
     elements.categorySelect.addEventListener('change', (e) => {
       selectedCategory = e.target.value;
     });
 
     elements.openBtn.addEventListener('click', openBox);
-    
-    // MODIFICADO: Chama o anúncio intersticial ao fechar
     elements.closeResult.addEventListener('click', () => {
       elements.result.classList.remove('show');
-      // CHAMA O ANÚNCIO INTERSTICIAL
-      showInterstitialAd();
     });
 
     elements.shareWhatsApp.addEventListener('click', shareWhatsApp);
     
+    // Configurar o botão de liberar acesso
     if (elements.unlockAccessBtn) {
       elements.unlockAccessBtn.addEventListener('click', unlockAccess);
     }
 
-    // --- Função de Desbloqueio (Atualizada) ---
     function unlockAccess() {
       const code = prompt("Digite o código de liberação recebido após o pagamento:");
       if (code && code.trim().toUpperCase() === "REVELA29") {
@@ -1016,17 +895,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         elements.openBtn.disabled = false;
         updateFreeVersesCounter();
         alert("✅ Acesso vitalício liberado com sucesso!");
-
-        // ATUALIZADO: Remove AdSense e link de upgrade imediatamente
-        if (elements.adSlot) elements.adSlot.remove();
-        if (elements.removeAdsLink) elements.removeAdsLink.remove();
-
       } else {
         alert("❌ Código incorreto. Verifique e tente novamente.");
       }
     }
 
-    // --- Funções do Jogo ---
     function openBox() {
       if (opening || !promises[selectedCategory]?.length) return;
 
@@ -1051,9 +924,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       const cat = promises[selectedCategory];
       currentPromise = cat[Math.floor(Math.random() * cat.length)];
       
+      // Tocar áudio e vídeo APENAS QUANDO O USUÁRIO CLICAR
       elements.openMusic.currentTime = 0;
       elements.openMusic.play().catch(console.warn);
       
+      // RESETAR E TOCAR O VÍDEO DA CAIXA ABRINDO
       elements.boxVideo.currentTime = 0;
       elements.boxVideo.loop = false;
       
@@ -1066,6 +941,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       
       elements.boxVideo.onended = finishRevelation;
       
+      // Fallback timeout
       setTimeout(() => {
         if(opening) {
           console.log("⏰ Fallback - mostrando resultado após timeout");
@@ -1118,10 +994,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       elements.resultCounter.textContent = `PROMESSA REVELADA`;
       elements.resultText.textContent = currentPromise.texto;
       elements.resultVerse.textContent = currentPromise.versiculo ? `— ${currentPromise.versiculo}` : '';
-      
-      // ATUALIZADO: Verifica o estado do botão salvar
-      updateSaveButtonState();
-      
       elements.result.classList.add('show');
     }
 
@@ -1152,159 +1024,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       window.open(`https://wa.me/?text=${encodeURIComponent(viralText)}`, '_blank');
     }
 
-    // ===========================================
-    // ✨ NOVAS FUNÇÕES ✨
-    // ===========================================
-
-    // --- LÓGICA DE ANÚNCIO INTERSTICIAL ---
-    function showInterstitialAd() {
-      if (!hasLifetimeAccess) {
-        console.log("Tentando exibir anúncio intersticial...");
-        // 'adBreak' é uma função fornecida pelo Google AdSense
-        // (requer a tag 'enable_page_level_ads' no <head>)
-        if (typeof adBreak === 'function') {
-          adBreak({
-            type: 'next', // Tipo de anúncio
-            name: 'after_promise_close' // Nome da sua colocação
-          });
-        } else {
-          console.warn("Função adBreak() do AdSense não encontrada.");
-        }
-      }
-    }
-
-    // --- LÓGICA DE FAVORITOS ---
-    function updateSaveButtonState() {
-      const isSaved = favorites.some(fav => fav.texto === currentPromise.texto && fav.versiculo === currentPromise.versiculo);
-      if (isSaved) {
-        elements.savePromiseBtn.textContent = "Salvo! ❤️";
-        elements.savePromiseBtn.classList.add('saved');
-        elements.savePromiseBtn.disabled = true;
-      } else {
-        elements.savePromiseBtn.textContent = "❤️ Salvar Promessa";
-        elements.savePromiseBtn.classList.remove('saved');
-        elements.savePromiseBtn.disabled = false;
-      }
-    }
-
-    function saveCurrentPromise() {
-      const isSaved = favorites.some(fav => fav.texto === currentPromise.texto && fav.versiculo === currentPromise.versiculo);
-      if (!isSaved) {
-        favorites.push(currentPromise);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateSaveButtonState();
-      }
-    }
-
-    function renderFavorites() {
-      if (favorites.length === 0) {
-        elements.favoritesList.innerHTML = `<p class="favorite-item-empty">Você ainda não salvou nenhuma promessa.</p>`;
-        return;
-      }
-      
-      elements.favoritesList.innerHTML = favorites.map(fav => `
-        <div class="favorite-item">
-          <p>"${fav.texto}"</p>
-          <span>${fav.versiculo ? `— ${fav.versiculo}` : ''}</span>
-        </div>
-      `).reverse().join(''); // .reverse() para mostrar os mais novos primeiro
-    }
-
-    // Listeners de Favoritos
-    elements.savePromiseBtn.addEventListener('click', saveCurrentPromise);
-    
-    elements.favoritesBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      renderFavorites();
-      elements.favoritesModal.classList.add('show');
-    });
-
-    elements.closeFavoritesModal.addEventListener('click', () => {
-      elements.favoritesModal.classList.remove('show');
-    });
-
-    elements.favoritesModal.addEventListener('click', (e) => {
-      if (e.target === elements.favoritesModal) {
-        elements.favoritesModal.classList.remove('show');
-      }
-    });
-
-    // --- LÓGICA DE NOTIFICAÇÕES PUSH ---
-elements.notifyBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  requestNotificationPermission();
-});
-
-// Função auxiliar para converter a chave VAPID em formato correto
-function urlBase64ToUint8Array(base64String) {
-  const padding = '='.repeat((4 - base64String.length % 4) % 4);
-  const base64 = (base64String + padding)
-    .replace(/-/g, '+')
-    .replace(/_/g, '/');
-
-  const rawData = window.atob(base64);
-  const outputArray = new Uint8Array(rawData.length);
-
-  for (let i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i);
-  }
-  return outputArray;
-}
-
-async function requestNotificationPermission() {
-  if (!('Notification' in window) || !('serviceWorker' in navigator)) {
-    alert('Seu navegador não suporta notificações.');
-    return;
-  }
-
-  const permission = await Notification.requestPermission();
-
-  if (permission === 'granted') {
-    console.log('Permissão de notificação concedida.');
-    elements.notifyBtn.textContent = "🔔 Promessas Ativadas!";
-    elements.notifyBtn.style.color = "#25D366"; // Verde
-
-    try {
-      const registration = await navigator.serviceWorker.ready;
-      const subscription = await registration.pushManager.getSubscription();
-
-      if (subscription) {
-        console.log('Usuário já inscrito:', subscription);
-        // !!! IMPORTANTE: envie 'subscription' para seu servidor aqui.
-      } else {
-        const VAPID_PUBLIC_KEY = 'BAfYzSWWZA4FPIVE0UCUiB-e_aBbPxIIdGlIReAWFHmynHUO70QWSjJIDyXoPiIPTtt8p5kcS_pumYBRZgV0AmU';
-
-        if (VAPID_PUBLIC_KEY === 'BAfYzSWWZA4FPIVE0UCUiB-e_aBbPxIIdGlIReAWFHmynHUO70QWSjJIDyXoPiIPTtt8p5kcS_pumYBRZgV0AmU') {
-          alert('Configuração pendente: é necessário adicionar a VAPID Public Key no script.');
-          return;
-        }
-
-        const newSubscription = await registration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) // ✅ CORREÇÃO AQUI
-        });
-
-        console.log('Nova inscrição:', newSubscription);
-
-        // !!! IMPORTANTE: envie 'newSubscription' para seu servidor
-        // (por exemplo, via fetch POST)
-      }
-
-      alert('✅ Pronto! Você receberá sua promessa diária.');
-    } catch (err) {
-      console.error('Falha ao se inscrever:', err);
-      alert('Houve um erro ao ativar as notificações.');
-    }
-
-  } else {
-    console.warn('Permissão de notificação negada.');
-    alert('Você bloqueou as notificações. Você pode reativá-las nas configurações do seu navegador.');
-  }
-}
-
-// --- FIM DAS NOVAS FUNÇÕES ---
-
-    
     // INICIAR CARREGAMENTO
     loadPromises();
   });
